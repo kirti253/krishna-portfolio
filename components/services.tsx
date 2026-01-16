@@ -157,22 +157,24 @@ export default function Services() {
                 ref={(el) => {
                   cardRefs.current[index] = el;
                 }}
-                className={`flex ${isLeftAligned ? "justify-start" : "justify-end"}`}
+                className={`flex ${isLeftAligned ? "justify-start" : "justify-end"} perspective-1000`}
+                style={{ perspective: "1000px" }}
               >
                 <div
-                  className={`w-full max-w-4xl bg-white rounded-2xl p-6 md:p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 ${
+                  className={`w-full max-w-4xl bg-white rounded-2xl p-6 md:p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-700 border border-gray-100 ${
                     isVisible
                       ? isLeftAligned
-                        ? "opacity-100 translate-x-0"
-                        : "opacity-100 translate-x-0"
-                      : isLeftAligned
-                      ? "opacity-0 -translate-x-10"
-                      : "opacity-0 translate-x-10"
+                        ? "animate-flipInLeft"
+                        : "animate-flipInRight"
+                      : ""
                   }`}
                   style={{
                     transitionDelay: `${index * 100}ms`,
-                    transform: `translateY(${translateY}px) scale(${scale}) rotateY(${rotateY}deg)`,
+                    transform: isVisible
+                      ? `perspective(1000px) translateY(${translateY}px) scale(${scale}) rotateY(${rotateY * 0.3}deg)`
+                      : `perspective(1000px) rotateY(${isLeftAligned ? "-90deg" : "90deg"}) translateX(${isLeftAligned ? "-50px" : "50px"})`,
                     opacity: isVisible ? Math.max(0.7, progress) : 0,
+                    transformStyle: "preserve-3d",
                   }}
                 >
                   <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
