@@ -5,7 +5,7 @@ import { Star } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className="min-h-screen bg-white font-[var(--font-poppins)]">
+    <div className="min-h-screen pt-14 bg-white font-[var(--font-poppins)]">
       {/* Navigation Bar */}
       <header className="fixed top-0 left-0 right-0 w-full px-6 py-4 flex justify-center z-50">
         <nav className="flex items-center gap-6 px-3 py-1 bg-white/80 backdrop-blur-md rounded-full shadow-sm">
