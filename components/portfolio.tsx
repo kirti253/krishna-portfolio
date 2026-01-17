@@ -39,6 +39,13 @@ const portfolioItems = [
 ];
 
 export default function Portfolio() {
+  const handleCardClick = (itemId: number) => {
+    // Handle card click - you can add navigation, modal, or other actions here
+    console.log(`Portfolio item ${itemId} clicked`);
+    // Example: router.push(`/portfolio/${itemId}`);
+    // Or: openModal(itemId);
+  };
+
   return (
     <section id="portfolio" className="w-full bg-white py-20 md:py-32">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
@@ -72,10 +79,7 @@ export default function Portfolio() {
         {/* Partner Logos */}
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-16">
           {partners.map((partner) => (
-            <div
-              key={partner.id}
-              className="flex flex-col items-center gap-2"
-            >
+            <div key={partner.id} className="flex flex-col items-center gap-2">
               <div
                 className={`text-3xl md:text-4xl font-bold ${partner.color}`}
               >
@@ -89,13 +93,14 @@ export default function Portfolio() {
         </div>
 
         {/* Portfolio Items Carousel */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden portfolio-carousel-container">
           <div className="flex animate-scroll-niches gap-4 md:gap-6">
             {/* First set of portfolio items */}
             {portfolioItems.map((item) => (
               <div
                 key={item.id}
-                className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group"
+                onClick={() => handleCardClick(item.id)}
+                className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300"
               >
                 <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                   <div className="text-gray-500 text-lg font-medium">
@@ -112,7 +117,8 @@ export default function Portfolio() {
             {portfolioItems.map((item) => (
               <div
                 key={`duplicate-${item.id}`}
-                className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group"
+                onClick={() => handleCardClick(item.id)}
+                className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300"
               >
                 <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                   <div className="text-gray-500 text-lg font-medium">

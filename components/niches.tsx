@@ -26,7 +26,10 @@ const niches = [
 
 export default function Niches() {
   return (
-    <section id="niches" className="w-full bg-gray-900 py-20 md:py-32 overflow-hidden">
+    <section
+      id="niches"
+      className="w-full bg-gray-900 py-20 md:py-32 overflow-hidden"
+    >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* Niches Label */}
         <div className="flex justify-center mb-6">
@@ -65,7 +68,7 @@ export default function Niches() {
                 }`}
               >
                 {niche.isIcon ? (
-                  <Users className="w-6 h-6 text-gray-900" />
+                  <Users className="w-6 h-6 text-gray-300" />
                 ) : (
                   niche.label
                 )}

@@ -223,11 +223,19 @@ body {
   }
 
   .animate-scroll-niches {
-    animation: scrollNiches 4s linear infinite;
+    animation: scrollNiches 30s linear infinite;
     display: flex;
     width: fit-content;
     will-change: transform;
     animation-play-state: running !important;
+  }
+
+  .portfolio-carousel-container:hover .animate-scroll-niches {
+    animation-play-state: paused !important;
+  }
+
+  .reviews-carousel-container:hover .animate-scroll-niches {
+    animation-play-state: paused !important;
   }
 
   .animate-flipInLeft {

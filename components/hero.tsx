@@ -1,14 +1,42 @@
 "use client";
 
 import Image from "next/image";
-import { Star } from "lucide-react";
+import { Star, Menu } from "lucide-react";
+import { useState } from "react";
 
 export default function Hero() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen pt-14 bg-white font-[var(--font-poppins)]">
       {/* Navigation Bar */}
-      <header className="fixed top-0 left-0 right-0 w-full px-6 py-4 flex justify-center z-50">
-        <nav className="flex items-center gap-6 px-3 py-1 bg-white/80 backdrop-blur-md rounded-full shadow-sm">
+      <header className="fixed top-0 left-0 right-0 w-full px-4 md:px-6 py-3 md:py-4 flex justify-center z-50">
+        {/* Mobile Navbar */}
+        <nav className="md:hidden flex items-center justify-between w-full px-4 py-2.5 bg-white/95 backdrop-blur-md rounded-full shadow-sm">
+          {/* Profile Icon */}
+          <div className="w-10 h-10 rounded-full bg-gradient-to-b from-orange-400 to-orange-600 flex items-center justify-center flex-shrink-0">
+            <span className="text-white font-bold text-sm">KB</span>
+          </div>
+
+          {/* Available for work text with status */}
+          <div className="flex items-center gap-2 flex-1 justify-center">
+            <span className="text-gray-800 text-sm font-medium">
+              Available for work
+            </span>
+            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+          </div>
+
+          {/* Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="w-10 h-10 rounded-full bg-orange-500 hover:bg-orange-600 flex items-center justify-center flex-shrink-0 transition-colors"
+          >
+            <Menu className="w-5 h-5 text-white" />
+          </button>
+        </nav>
+
+        {/* Desktop Navbar */}
+        <nav className="hidden md:flex items-center gap-6 px-3 py-1 bg-white/80 backdrop-blur-md rounded-full shadow-sm">
           {/* Logo */}
           <div className="flex items-center gap-2">
             <span className="text-black font-semibold text-base">KRISHNA</span>
@@ -47,6 +75,46 @@ export default function Hero() {
             Contact
           </button>
         </nav>
+
+        {/* Mobile Menu Dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 mt-2 mx-4 bg-white rounded-2xl shadow-xl border border-gray-100 py-4">
+            <a
+              href="#home"
+              className="block px-6 py-3 text-gray-800 hover:bg-gray-50 transition-colors text-sm font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </a>
+            <a
+              href="#services"
+              className="block px-6 py-3 text-gray-800 hover:bg-gray-50 transition-colors text-sm font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Services
+            </a>
+            <a
+              href="#portfolio"
+              className="block px-6 py-3 text-gray-800 hover:bg-gray-50 transition-colors text-sm font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Portfolio
+            </a>
+            <a
+              href="#faqs"
+              className="block px-6 py-3 text-gray-800 hover:bg-gray-50 transition-colors text-sm font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              FAQs
+            </a>
+            <button
+              className="w-full mt-2 mx-6 bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors text-sm font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </button>
+          </div>
+        )}
       </header>
 
       {/* Main Hero Content */}
@@ -171,22 +239,19 @@ export default function Hero() {
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white" />
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 border-2 border-white" />
             </div>
-            <span className="text-gray-600 font-bold text-sm">
+            <span className="text-gray-300 font-bold text-sm">
               Trusted by 120+ Healthcare Founders
             </span>
           </div>
 
           {/* Right: Rating */}
           <div className="flex items-center gap-3">
-            <span className="text-gray-600 font-medium text-sm">
+            <span className="text-gray-300 font-medium text-sm">
               RATED EXCELLENT:
             </span>
             <div className="flex gap-1">
               {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                />
+                <Star key={i} className="w-5 h-5 fill-teal-400 text-teal-400" />
               ))}
             </div>
           </div>
