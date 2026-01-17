@@ -8,7 +8,7 @@ export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen pt-14 bg-white font-[var(--font-poppins)]">
+    <div className="min-h-screen pt-14 bg-white font-[var(--font-poppins)] overflow-x-hidden">
       {/* Navigation Bar */}
       <header className="fixed top-0 left-0 right-0 w-full px-4 md:px-6 py-3 md:py-4 flex justify-center z-50">
         {/* Mobile Navbar */}
@@ -197,7 +197,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column */}
-          <div className="space-y-7 overflow-visible">
+          <div className="space-y-7 overflow-visible hidden lg:block">
             <h1
               className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mt-10 text-black uppercase leading-none whitespace-nowrap animate-slideInRight"
               style={{ animationDelay: "0.3s" }}
@@ -239,19 +239,22 @@ export default function Hero() {
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white" />
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 border-2 border-white" />
             </div>
-            <span className="text-gray-300 font-bold text-sm">
+            <span className="text-gray-600 font-bold text-sm">
               Trusted by 120+ Healthcare Founders
             </span>
           </div>
 
           {/* Right: Rating */}
           <div className="flex items-center gap-3">
-            <span className="text-gray-300 font-medium text-sm">
+            <span className="text-gray-600 font-medium text-sm">
               RATED EXCELLENT:
             </span>
             <div className="flex gap-1">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-teal-400 text-teal-400" />
+                <Star
+                  key={i}
+                  className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                />
               ))}
             </div>
           </div>
@@ -259,7 +262,7 @@ export default function Hero() {
       </div>
 
       {/* Video Showcase Section */}
-      <div className="w-full bg-black py-20 mt-20">
+      <div className="w-full bg-black py-20 mt-20 overflow-hidden">
         <div className="container mx-auto px-6">
           {/* Video Carousel */}
           <div className="relative overflow-hidden mb-12">
