@@ -64,7 +64,7 @@ export default function Portfolio() {
         {/* Get Quote Button */}
         <div className="flex justify-center mb-8">
           <button className="flex items-center gap-3 bg-gray-100 hover:bg-gray-200 text-gray-900 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105">
-            <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center">
               <ArrowRight className="w-5 h-5 text-white" />
             </div>
             <span>Get Quote</span>

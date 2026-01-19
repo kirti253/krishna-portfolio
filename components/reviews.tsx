@@ -83,7 +83,7 @@ export default function Reviews() {
                   {[...Array(review.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                      className="w-5 h-5 fill-teal-400 text-teal-400"
                     />
                   ))}
                 </div>
@@ -95,7 +95,7 @@ export default function Reviews() {
 
                 {/* Reviewer Info */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
                     {review.avatar}
                   </div>
                   <div>
@@ -121,7 +121,7 @@ export default function Reviews() {
                   {[...Array(review.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                      className="w-5 h-5 fill-teal-400 text-teal-400"
                     />
                   ))}
                 </div>
@@ -133,7 +133,7 @@ export default function Reviews() {
 
                 {/* Reviewer Info */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
                     {review.avatar}
                   </div>
                   <div>

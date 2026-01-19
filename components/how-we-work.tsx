@@ -52,7 +52,7 @@ export default function HowWeWork() {
           <div className="space-y-8">
             {/* Section Label */}
             <div className="flex items-center gap-3">
-              <div className="w-3 h-3 bg-orange-500 rounded-sm"></div>
+              <div className="w-3 h-3 bg-teal-500 rounded-sm"></div>
               <span className="text-gray-600 text-sm md:text-base font-medium uppercase tracking-wide">
                 How We Work
               </span>
@@ -82,7 +82,7 @@ export default function HowWeWork() {
 
               {/* Bottom Right - Medical Setting Image */}
               <div className="relative rounded-lg overflow-hidden col-span-1">
-                <div className="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                <div className="w-full h-full bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center">
                   <div className="text-gray-600 text-sm font-medium">
                     Medical Setting
                   </div>
@@ -102,7 +102,7 @@ export default function HowWeWork() {
                     <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center border-4 transition-all duration-300 ${
                         step.isActive
-                          ? "bg-orange-500 border-white shadow-lg"
+                          ? "bg-teal-500 border-white shadow-lg"
                           : "bg-white border-gray-300"
                       }`}
                     >
@@ -117,7 +117,7 @@ export default function HowWeWork() {
                     {index < processSteps.length - 1 && (
                       <div
                         className={`w-1 flex-1 mt-2 ${
-                          index === 0 ? "bg-orange-500" : "bg-gray-200"
+                          index === 0 ? "bg-teal-500" : "bg-gray-200"
                         }`}
                         style={{ minHeight: "80px" }}
                       ></div>
@@ -129,7 +129,7 @@ export default function HowWeWork() {
                     <div className="flex items-center gap-4 mb-2">
                       <span
                         className={`text-4xl md:text-5xl font-black ${
-                          step.isActive ? "text-orange-500" : "text-gray-300"
+                          step.isActive ? "text-teal-500" : "text-gray-300"
                         }`}
                       >
                         {step.number}

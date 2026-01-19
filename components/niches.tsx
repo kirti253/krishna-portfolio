@@ -59,7 +59,7 @@ export default function Niches() {
                 key={niche.id}
                 className={`flex-shrink-0 px-6 py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 hover:scale-105 ${
                   niche.highlighted
-                    ? "bg-orange-500 text-white"
+                    ? "bg-teal-500 text-white"
                     : "bg-white text-gray-900"
                 } ${
                   niche.isIcon
@@ -80,7 +80,7 @@ export default function Niches() {
                 key={`duplicate-${niche.id}`}
                 className={`flex-shrink-0 px-6 py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 hover:scale-105 ${
                   niche.highlighted
-                    ? "bg-orange-500 text-white"
+                    ? "bg-teal-500 text-white"
                     : "bg-white text-gray-900"
                 } ${
                   niche.isIcon

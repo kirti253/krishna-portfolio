@@ -2,7 +2,6 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Geist_Mono, Anton } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { Toaster } from "sonner";
 import "./globals.css";
 
 const _inter = Inter({ subsets: ["latin"] });
@@ -51,7 +50,6 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {children}
-        <Toaster position="top-right" />
         <Analytics />
       </body>
     </html>

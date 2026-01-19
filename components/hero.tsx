@@ -14,7 +14,7 @@ export default function Hero() {
         {/* Mobile Navbar */}
         <nav className="md:hidden flex items-center justify-between w-full px-4 py-2.5 bg-white/95 backdrop-blur-md rounded-full shadow-sm">
           {/* Profile Icon */}
-          <div className="w-10 h-10 rounded-full bg-gradient-to-b from-orange-400 to-orange-600 flex items-center justify-center flex-shrink-0">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-b from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
             <span className="text-white font-bold text-sm">KB</span>
           </div>
 
@@ -23,13 +23,13 @@ export default function Hero() {
             <span className="text-gray-800 text-sm font-medium">
               Available for work
             </span>
-            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
           </div>
 
           {/* Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="w-10 h-10 rounded-full bg-orange-500 hover:bg-orange-600 flex items-center justify-center flex-shrink-0 transition-colors"
+            className="w-10 h-10 rounded-full bg-teal-500 hover:bg-teal-600 flex items-center justify-center flex-shrink-0 transition-colors"
           >
             <Menu className="w-5 h-5 text-white" />
           </button>
@@ -185,7 +185,7 @@ export default function Hero() {
           {/* Center Column: Image */}
           <div className="flex justify-center">
             <div className="relative w-80 h-96 rounded-3xl overflow-hidden animate-popUp">
-              <div className="absolute inset-0 bg-gradient-to-b from-orange-400 to-red-600" />
+              <div className="absolute inset-0 bg-gradient-to-b from-teal-400 to-teal-600" />
               <Image
                 src="/professional-indian-man-content-creator-portrait-d.jpg"
                 alt="Manjot Singh"
@@ -211,7 +211,7 @@ export default function Hero() {
               className="flex gap-3 justify-start mt-6 animate-fadeInUp"
               style={{ animationDelay: "0.4s" }}
             >
-              <span className="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
+              <span className="bg-teal-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
                 MBA
               </span>
               <span className="text-gray-700 text-sm py-2">IMT Ghaziabad</span>
@@ -220,7 +220,7 @@ export default function Hero() {
               className="flex flex-wrap gap-3 justify-start animate-fadeInUp"
               style={{ animationDelay: "0.5s" }}
             >
-              <span className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium">
+              <span className="bg-teal-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
                 Google Digital Marketing
               </span>
               <span className="text-gray-700 text-sm py-2">Certified</span>
@@ -235,9 +235,9 @@ export default function Hero() {
           {/* Left: Trusted By */}
           <div className="flex items-center gap-4">
             <div className="flex -space-x-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 border-2 border-white" />
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white" />
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 border-2 border-white" />
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 border-2 border-white" />
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-teal-700 border-2 border-white" />
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-300 to-teal-500 border-2 border-white" />
             </div>
             <span className="text-gray-600 font-bold text-sm">
               Trusted by 120+ Healthcare Founders

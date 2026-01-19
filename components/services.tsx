@@ -194,7 +194,7 @@ export default function Services() {
                     <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
                       {/* Image Container */}
                       <div
-                        className={`relative w-full md:w-1/2 h-[300px] md:h-[400px] lg:h-[450px] flex-shrink-0 border-[4px] border-[#2F5C5B] rounded-[30px_30px_15px_15px] overflow-hidden shadow-md hover:scale-105 transition-all duration-300 ${
+                        className={`relative w-full md:w-1/2 h-[300px] md:h-[400px] lg:h-[450px] flex-shrink-0 border-[4px] border-teal-500 rounded-[30px_30px_15px_15px] overflow-hidden shadow-md hover:scale-105 transition-all duration-300 ${
                           isVisible
                             ? "opacity-100 scale-100"
                             : "opacity-0 scale-95"
@@ -215,14 +215,14 @@ export default function Services() {
                       <div className="relative flex-1 w-full md:w-1/2">
                         {/* Icon */}
                         <div
-                          className={`absolute -top-2 -right-2 w-14 h-14 md:w-16 md:h-18 lg:w-20 lg:h-20 bg-[#F8E7BF] rounded-lg flex items-center justify-center z-10 shadow-md hover:scale-110 hover:rotate-6 transition-all duration-500 ${
-                            isVisible
-                              ? "opacity-100 scale-100 rotate-0"
-                              : "opacity-0 scale-0 rotate-180"
-                          }`}
-                          style={{ transitionDelay: `${index * 100 + 300}ms` }}
-                        >
-                          <IconComponent className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-[#8B6914]" />
+                        className={`absolute -top-2 -right-2 w-14 h-14 md:w-16 md:h-18 lg:w-20 lg:h-20 bg-teal-500 rounded-lg flex items-center justify-center z-10 shadow-md hover:scale-110 hover:rotate-6 transition-all duration-500 ${
+                          isVisible
+                            ? "opacity-100 scale-100 rotate-0"
+                            : "opacity-0 scale-0 rotate-180"
+                        }`}
+                        style={{ transitionDelay: `${index * 100 + 300}ms` }}
+                      >
+                        <IconComponent className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
                         </div>
 
                         {/* Title */}
