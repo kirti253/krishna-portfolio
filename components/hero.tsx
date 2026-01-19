@@ -107,12 +107,15 @@ export default function Hero() {
             >
               FAQs
             </a>
-            <button
-              className="w-full  mx-6 bg-teal-500 text-white px-6 py-3 rounded-full hover:bg-teal-600 transition-colors text-lg font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact
-            </button>
+            <div className="px-6 pt-2">
+              <a
+                href="#contact"
+                className="block w-full bg-teal-500 text-white px-6 py-4 rounded-full hover:bg-teal-600 transition-colors text-base font-medium text-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
+              </a>
+            </div>
           </div>
         )}
       </header>
@@ -123,13 +126,13 @@ export default function Hero() {
           {/* Left Column */}
           <div className="space-y-8">
             <h1
-              className="text-gray-700 text-4xl font-semibold uppercase tracking-wide font-[var(--font-poppins)] animate-slideInLeft"
+              className="text-gray-700 text-5xl md:text-4xl font-semibold uppercase tracking-wide font-[var(--font-poppins)] animate-slideInLeft"
               style={{ animationDelay: "0.2s" }}
             >
               KRISHNA BHATT
             </h1>
             <h1
-              className="text-8xl lg:text-9xl font-black text-black uppercase leading-none font-[var(--font-anton)] animate-slideInLeft"
+              className="text-7xl md:text-8xl lg:text-9xl font-black text-black uppercase leading-none font-[var(--font-anton)] animate-slideInLeft break-words"
               style={{ animationDelay: "0.4s" }}
             >
               DIGITAL
@@ -196,7 +199,38 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column */}
+          {/* VIDEO EDITOR - Mobile view (below image) */}
+          <div className="lg:hidden space-y-4 text-center">
+            <h1
+              className="text-6xl md:text-7xl lg:text-8xl font-black text-black uppercase leading-none animate-slideInRight"
+              style={{ animationDelay: "0.3s" }}
+            >
+              VIDEO EDITOR
+            </h1>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-xs mx-auto">
+              I help doctors turn knowledge into stories patients trust.
+            </p>
+            <div
+              className="flex gap-3 justify-center mt-6 animate-fadeInUp"
+              style={{ animationDelay: "0.4s" }}
+            >
+              <span className="bg-teal-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                MBA
+              </span>
+              <span className="text-gray-700 text-sm py-2">IMT Ghaziabad</span>
+            </div>
+            <div
+              className="flex flex-wrap gap-3 justify-center animate-fadeInUp"
+              style={{ animationDelay: "0.5s" }}
+            >
+              <span className="bg-teal-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                Google Digital Marketing
+              </span>
+              <span className="text-gray-700 text-sm py-2">Certified</span>
+            </div>
+          </div>
+
+          {/* Right Column - Desktop only */}
           <div className="space-y-7 overflow-visible hidden lg:block">
             <h1
               className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mt-10 text-black uppercase leading-none whitespace-nowrap animate-slideInRight"

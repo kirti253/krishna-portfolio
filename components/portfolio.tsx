@@ -102,11 +102,14 @@ export default function Portfolio() {
                 onClick={() => handleCardClick(item.id)}
                 className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <div className="text-gray-500 text-lg font-medium">
-                    {item.title}
-                  </div>
-                </div>
+                <video
+                  src="/portfolio.mp4"
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
                 {/* Before edits/RAW label */}
                 <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium">
                   Before edits/RAW
@@ -120,11 +123,14 @@ export default function Portfolio() {
                 onClick={() => handleCardClick(item.id)}
                 className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <div className="text-gray-500 text-lg font-medium">
-                    {item.title}
-                  </div>
-                </div>
+                <video
+                  src="/portfolio.mp4"
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
                 {/* Before edits/RAW label */}
                 <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium">
                   Before edits/RAW
