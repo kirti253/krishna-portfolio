@@ -71,7 +71,7 @@ export default function Hero() {
           </div>
 
           {/* Contact Button */}
-          <button className="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors text-lg">
+          <button className="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600 transition-colors text-lg">
             Contact
           </button>
         </nav>
@@ -108,7 +108,7 @@ export default function Hero() {
               FAQs
             </a>
             <button
-              className="w-full mt-2 mx-6 bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors text-sm font-medium"
+              className="w-full  mx-6 bg-teal-500 text-white px-6 py-3 rounded-full hover:bg-teal-600 transition-colors text-lg font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
