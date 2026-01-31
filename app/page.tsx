@@ -15,7 +15,7 @@ export default function Home() {
       <Niches />
       <Portfolio />
       <HowWeWork />
-      {/* <Reviews /> */}
+      <Reviews />
       <Contact />
       <Footer />
     </div>
