@@ -12,12 +12,12 @@ export default function Home() {
     <div className="w-full overflow-x-hidden">
       <Hero />
       <Services />
-      <Niches />
+      {/* <Niches />
       <Portfolio />
       <HowWeWork />
       <Reviews />
       <Contact />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }
