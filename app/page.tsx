@@ -14,9 +14,9 @@ export default function Home() {
       <Services />
       <Niches />
       <Portfolio />
-      <HowWeWork />
+      {/* <HowWeWork />
       <Reviews />
-      <Contact />
+      <Contact /> */}
       <Footer />
     </div>
   );
