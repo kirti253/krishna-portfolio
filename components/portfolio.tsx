@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import { useDriveVideos } from "@/hooks/use-drive-videos";
 
 const partners = [
   {
@@ -29,22 +30,15 @@ const partners = [
   },
 ];
 
-const portfolioItems = [
-  { id: 1, title: "Portfolio Item 1" },
-  { id: 2, title: "Portfolio Item 2" },
-  { id: 3, title: "Portfolio Item 3" },
-  { id: 4, title: "Portfolio Item 4" },
-  { id: 5, title: "Portfolio Item 5" },
-  { id: 6, title: "Portfolio Item 6" },
-];
-
 export default function Portfolio() {
-  const handleCardClick = (itemId: number) => {
-    // Handle card click - you can add navigation, modal, or other actions here
-    console.log(`Portfolio item ${itemId} clicked`);
-    // Example: router.push(`/portfolio/${itemId}`);
-    // Or: openModal(itemId);
+  const { videos, loading, error } = useDriveVideos();
+
+  const handleCardClick = (videoId: string) => {
+    console.log(`Portfolio video ${videoId} clicked`);
   };
+
+  // Build carousel items: use drive videos, duplicate set for seamless loop
+  const displayVideos = loading ? [] : videos.length > 0 ? videos : [];
 
   return (
     <section id="portfolio" className="w-full bg-white py-20 md:py-32">
@@ -92,51 +86,46 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {/* Portfolio Items Carousel */}
+        {/* Portfolio Items Carousel - videos from Google Drive */}
         <div className="relative overflow-hidden portfolio-carousel-container">
+          {error && (
+            <p className="text-center text-amber-600 mb-4 text-sm">
+              Could not load videos. Check Google Drive setup.
+            </p>
+          )}
           <div className="flex animate-scroll-niches gap-4 md:gap-6">
-            {/* First set of portfolio items */}
-            {portfolioItems.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => handleCardClick(item.id)}
-                className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300"
-              >
-                <video
-                  src="/portfolio.mp4"
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
-                {/* Before edits/RAW label */}
-                <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium">
-                  Before edits/RAW
-                </div>
-              </div>
-            ))}
-            {/* Duplicate set for seamless loop */}
-            {portfolioItems.map((item) => (
-              <div
-                key={`duplicate-${item.id}`}
-                onClick={() => handleCardClick(item.id)}
-                className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300"
-              >
-                <video
-                  src="/portfolio.mp4"
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
-                {/* Before edits/RAW label */}
-                <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium">
-                  Before edits/RAW
-                </div>
-              </div>
-            ))}
+            {/* First set of videos */}
+            {displayVideos.length > 0
+              ? [...displayVideos, ...displayVideos].map((video, idx) => (
+                  <div
+                    key={`${video.id}-${idx}`}
+                    onClick={() => handleCardClick(video.id)}
+                    className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300"
+                  >
+                    <iframe
+                      src={`${video.embedUrl}?autoplay=1&mute=1`}
+                      title={video.name}
+                      className="w-full h-full pointer-events-none"
+                      allow="autoplay"
+                      allowFullScreen
+                    />
+                    <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                      Before edits/RAW
+                    </div>
+                  </div>
+                ))
+              : Array.from({ length: 12 }).map((_, i) => (
+                  <div
+                    key={`placeholder-${i}`}
+                    className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative bg-gray-200 flex items-center justify-center"
+                  >
+                    {loading ? (
+                      <span className="text-gray-500 text-sm">Loading videos…</span>
+                    ) : (
+                      <span className="text-gray-500 text-sm text-center px-2">Add NEXT_PUBLIC_DRIVE_VIDEO_IDS in .env</span>
+                    )}
+                  </div>
+                ))}
           </div>
         </div>
       </div>

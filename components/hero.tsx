@@ -3,9 +3,22 @@
 import Image from "next/image";
 import { Star, Menu } from "lucide-react";
 import { useState } from "react";
+import { useDriveVideos } from "@/hooks/use-drive-videos";
+
+// Optional metadata for hero carousel (by index). Falls back to video name if missing.
+const HERO_VIDEO_META: { title: string; subtitle: string; logo: string }[] = [
+  { title: "COSNIK PLASTIC SURGERY", subtitle: "How to reach us", logo: "COSNIK" },
+  { title: "MediSyn Neuro & Gynae Centr", subtitle: "Medical Consultation", logo: "MediSyn" },
+  { title: "Livasa We care for life", subtitle: "Healthcare Services", logo: "Livasa" },
+  { title: "BP Monitoring", subtitle: "सब जानते हैं अगर किसी को बीपी है", logo: "HealthCare" },
+  { title: "Livasa We care for life", subtitle: "Medical Services", logo: "Livasa" },
+  { title: "COSNIK", subtitle: "similar to insulin", logo: "COSNIK" },
+];
 
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { videos, loading } = useDriveVideos();
+  const displayVideos = loading ? [] : videos;
 
   return (
     <div className="min-h-screen pt-14 bg-white font-[var(--font-poppins)] overflow-x-hidden">
@@ -298,145 +311,67 @@ export default function Hero() {
       {/* Video Showcase Section */}
       <div className="w-full bg-black py-20 mt-20 overflow-hidden">
         <div className="container mx-auto px-6">
-          {/* Video Carousel */}
+          {/* Video Carousel - videos from Google Drive */}
           <div className="relative overflow-hidden mb-12">
             <div className="flex animate-scroll">
-              {/* First set of videos */}
-              {[
-                {
-                  id: 1,
-                  title: "COSNIK PLASTIC SURGERY",
-                  subtitle: "How to reach us",
-                  logo: "COSNIK",
-                },
-                {
-                  id: 2,
-                  title: "MediSyn Neuro & Gynae Centr",
-                  subtitle: "Medical Consultation",
-                  logo: "MediSyn",
-                },
-                {
-                  id: 3,
-                  title: "Livasa We care for life",
-                  subtitle: "Healthcare Services",
-                  logo: "Livasa",
-                },
-                {
-                  id: 4,
-                  title: "BP Monitoring",
-                  subtitle: "सब जानते हैं अगर किसी को बीपी है",
-                  logo: "HealthCare",
-                },
-                {
-                  id: 5,
-                  title: "Livasa We care for life",
-                  subtitle: "Medical Services",
-                  logo: "Livasa",
-                },
-                {
-                  id: 6,
-                  title: "COSNIK",
-                  subtitle: "similar to insulin",
-                  logo: "COSNIK",
-                },
-              ].map((video) => (
-                <div
-                  key={video.id}
-                  className="flex-shrink-0 w-[320px] h-[480px] mx-4 rounded-lg overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 relative group"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-                  <div className="absolute top-4 right-4 z-20">
-                    <span className="text-white text-xs font-semibold bg-black/50 px-3 py-1 rounded-full">
-                      {video.logo}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                    <h3 className="text-white font-semibold text-lg mb-1">
-                      {video.title}
-                    </h3>
-                    <p className="text-gray-300 text-sm">{video.subtitle}</p>
-                  </div>
-                  <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                      <svg
-                        className="w-8 h-8 text-white ml-1"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
+              {displayVideos.length > 0
+                ? [...displayVideos, ...displayVideos].map((video, idx) => {
+                    const meta = HERO_VIDEO_META[idx % HERO_VIDEO_META.length];
+                    return (
+                      <div
+                        key={`${video.id}-${idx}`}
+                        className="flex-shrink-0 w-[320px] h-[480px] mx-4 rounded-lg overflow-hidden bg-gray-900 relative group"
                       >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+                        <iframe
+                          src={`${video.embedUrl}?autoplay=1&mute=1`}
+                          title={video.name}
+                          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                          allow="autoplay"
+                          allowFullScreen
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+                        <div className="absolute top-4 right-4 z-20">
+                          <span className="text-white text-xs font-semibold bg-black/50 px-3 py-1 rounded-full">
+                            {meta?.logo ?? video.name.slice(0, 8)}
+                          </span>
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                          <h3 className="text-white font-semibold text-lg mb-1">
+                            {meta?.title ?? video.name}
+                          </h3>
+                          <p className="text-gray-300 text-sm">{meta?.subtitle ?? ""}</p>
+                        </div>
+                      </div>
+                    );
+                  })
+                : [...HERO_VIDEO_META, ...HERO_VIDEO_META].map((video, idx) => (
+                    <div
+                      key={`placeholder-${idx}`}
+                      className="flex-shrink-0 w-[320px] h-[480px] mx-4 rounded-lg overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 relative group"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+                      <div className="absolute top-4 right-4 z-20">
+                        <span className="text-white text-xs font-semibold bg-black/50 px-3 py-1 rounded-full">
+                          {video.logo}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                        <h3 className="text-white font-semibold text-lg mb-1">{video.title}</h3>
+                        <p className="text-gray-300 text-sm">{video.subtitle}</p>
+                      </div>
+                      <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                        {loading ? (
+                          <span className="text-gray-400 text-sm">Loading…</span>
+                        ) : (
+                          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                            <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-              {/* Duplicate set for seamless loop */}
-              {[
-                {
-                  id: 7,
-                  title: "COSNIK PLASTIC SURGERY",
-                  subtitle: "How to reach us",
-                  logo: "COSNIK",
-                },
-                {
-                  id: 8,
-                  title: "MediSyn Neuro & Gynae Centr",
-                  subtitle: "Medical Consultation",
-                  logo: "MediSyn",
-                },
-                {
-                  id: 9,
-                  title: "Livasa We care for life",
-                  subtitle: "Healthcare Services",
-                  logo: "Livasa",
-                },
-                {
-                  id: 10,
-                  title: "BP Monitoring",
-                  subtitle: "सब जानते हैं अगर किसी को बीपी है",
-                  logo: "HealthCare",
-                },
-                {
-                  id: 11,
-                  title: "Livasa We care for life",
-                  subtitle: "Medical Services",
-                  logo: "Livasa",
-                },
-                {
-                  id: 12,
-                  title: "COSNIK",
-                  subtitle: "similar to insulin",
-                  logo: "COSNIK",
-                },
-              ].map((video) => (
-                <div
-                  key={video.id}
-                  className="flex-shrink-0 w-[320px] h-[480px] mx-4 rounded-lg overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 relative group"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-                  <div className="absolute top-4 right-4 z-20">
-                    <span className="text-white text-xs font-semibold bg-black/50 px-3 py-1 rounded-full">
-                      {video.logo}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                    <h3 className="text-white font-semibold text-lg mb-1">
-                      {video.title}
-                    </h3>
-                    <p className="text-gray-300 text-sm">{video.subtitle}</p>
-                  </div>
-                  <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                      <svg
-                        className="w-8 h-8 text-white ml-1"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  ))}
             </div>
           </div>
 
