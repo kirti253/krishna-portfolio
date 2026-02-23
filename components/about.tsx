@@ -15,7 +15,7 @@ export default function About() {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) {
@@ -30,7 +30,11 @@ export default function About() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="w-full bg-gray-50 py-20 md:py-32">
+    <section
+      ref={sectionRef}
+      id="about"
+      className="w-full bg-gray-50 py-20 md:py-32"
+    >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left Column: Image */}
@@ -44,16 +48,21 @@ export default function About() {
           </div>
 
           {/* Right Column: Content */}
-          <div className={`space-y-6 ${isVisible ? "animate-fadeInUp" : "opacity-0"}`}>
+          <div
+            className={`space-y-6 ${isVisible ? "animate-fadeInUp" : "opacity-0"}`}
+          >
             <div>
               <h2 className="text-4xl md:text-5xl lg:text-5xl font-black text-black mb-6">
                 About Me
               </h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                I'm a video editor passionate about transforming ideas into engaging visual stories.
+                I'm a video editor passionate about transforming ideas into
+                engaging visual stories.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">
-                From social media reels to YouTube videos and brand promos, I help creators stand out with clean cuts, cinematic transitions, and storytelling that keeps audiences watching.
+                From social media reels to YouTube videos and brand promos, I
+                help creators stand out with clean cuts, cinematic transitions,
+                and storytelling that keeps audiences watching.
               </p>
             </div>
 
@@ -64,8 +73,12 @@ export default function About() {
                   ✓
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Expert Storyteller</h3>
-                  <p className="text-gray-600 text-sm">Create narratives that captivate and convert</p>
+                  <h3 className="font-bold text-gray-900 mb-1">
+                    Expert Storyteller
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Create narratives that captivate and convert
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -73,8 +86,12 @@ export default function About() {
                   ✓
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Multi-Platform Specialist</h3>
-                  <p className="text-gray-600 text-sm">Optimize content for YouTube, Instagram, TikTok & more</p>
+                  <h3 className="font-bold text-gray-900 mb-1">
+                    Multi-Platform Specialist
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Optimize content for YouTube, Instagram, TikTok & more
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -82,8 +99,12 @@ export default function About() {
                   ✓
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Fast Turnaround</h3>
-                  <p className="text-gray-600 text-sm">Quick, professional delivery without compromising quality</p>
+                  <h3 className="font-bold text-gray-900 mb-1">
+                    Fast Turnaround
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Quick, professional delivery without compromising quality
+                  </p>
                 </div>
               </div>
             </div>

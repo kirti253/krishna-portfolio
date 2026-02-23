@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Star, Menu } from "lucide-react";
 import { useState } from "react";
+import { videoUrl } from "@/lib/video-url";
 
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -137,28 +138,34 @@ export default function Hero() {
             >
               SCROLL-STOPPING STORIES
             </h2>
-            
+
             <div className="flex flex-col gap-4 pt-4">
               <div
                 className="flex items-center gap-3 animate-fadeInUp"
                 style={{ animationDelay: "0.5s" }}
               >
                 <span className="text-2xl">🎬</span>
-                <span className="text-black font-semibold">200+ videos edited</span>
+                <span className="text-black font-semibold">
+                  200+ videos edited
+                </span>
               </div>
               <div
                 className="flex items-center gap-3 animate-fadeInUp"
                 style={{ animationDelay: "0.6s" }}
               >
                 <span className="text-2xl">🚀</span>
-                <span className="text-black font-semibold">5M+ views generated</span>
+                <span className="text-black font-semibold">
+                  5M+ views generated
+                </span>
               </div>
               <div
                 className="flex items-center gap-3 animate-fadeInUp"
                 style={{ animationDelay: "0.7s" }}
               >
                 <span className="text-2xl">⭐</span>
-                <span className="text-black font-semibold">Trusted by creators & startups</span>
+                <span className="text-black font-semibold">
+                  Trusted by creators & startups
+                </span>
               </div>
             </div>
           </div>
@@ -168,11 +175,12 @@ export default function Hero() {
             <div
               className="relative w-80 h-96 rounded-3xl overflow-hidden animate-popUp shadow-2xl"
               style={{
-                background: "linear-gradient(135deg, #ff9500 0%, #ff6b6b 50%, #ff4757 100%)",
+                background:
+                  "linear-gradient(135deg, #ff9500 0%, #ff6b6b 50%, #ff4757 100%)",
               }}
             >
               <Image
-                src="/professional-indian-man-content-creator-portrait-d.jpg"
+                src="/heroimage.jpeg"
                 alt="Video Editor"
                 fill
                 className="object-cover"
@@ -188,13 +196,16 @@ export default function Hero() {
                 className="text-6xl md:text-7xl lg:text-8xl font-black text-black uppercase leading-none font-[var(--font-anton)] animate-slideInRight"
                 style={{ animationDelay: "0.3s" }}
               >
-                VIDEO<br />EDITOR
+                VIDEO
+                <br />
+                EDITOR
               </h2>
               <p
                 className="text-gray-600 text-base leading-relaxed mt-4 max-w-sm animate-fadeInUp"
                 style={{ animationDelay: "0.5s" }}
               >
-                I help creators, brands, and businesses turn footage into scroll-stopping stories.
+                I help creators, brands, and businesses turn footage into
+                scroll-stopping stories.
               </p>
             </div>
 
@@ -207,7 +218,9 @@ export default function Hero() {
                 <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">
                   200+
                 </span>
-                <span className="text-gray-700 text-sm font-medium">Videos Edited</span>
+                <span className="text-gray-700 text-sm font-medium">
+                  Videos Edited
+                </span>
               </div>
               <div
                 className="flex items-center gap-2 animate-fadeInUp"
@@ -216,7 +229,9 @@ export default function Hero() {
                 <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">
                   5M+
                 </span>
-                <span className="text-gray-700 text-sm font-medium">Views Generated</span>
+                <span className="text-gray-700 text-sm font-medium">
+                  Views Generated
+                </span>
               </div>
             </div>
 
@@ -237,40 +252,127 @@ export default function Hero() {
       </div>
 
       {/* Video Showcase Section */}
-      {/* Video Showcase Section */}
       <div className="w-full bg-black py-20 mt-20 overflow-hidden">
         <div className="container mx-auto px-6">
-          {/* Video Carousel Placeholder */}
+          {/* Video Carousel */}
           <div className="relative overflow-hidden mb-12">
-            <div className="flex animate-scroll">
+            <div className="flex animate-scroll gap-4">
               {[
-                { title: "Short Form Content", subtitle: "Reels & TikToks", logo: "SF" },
-                { title: "YouTube Editing", subtitle: "Long-form videos", logo: "YT" },
-                { title: "Podcast Highlights", subtitle: "Multi-cam edits", logo: "PH" },
-                { title: "Brand Promos", subtitle: "Professional videos", logo: "BP" },
-                { title: "Motion Graphics", subtitle: "Animations & effects", logo: "MG" },
-                { title: "Short Form Content", subtitle: "Reels & TikToks", logo: "SF" },
+                {
+                  title: "Short Form Content",
+                  subtitle: "Reels & TikToks",
+                  videoUrl:
+                    "/videos/WhatsApp Video 2026-02-22 at 10.42.29 PM.mp4",
+                },
+                {
+                  title: "YouTube Editing",
+                  subtitle: "Long-form videos",
+                  videoUrl: "/videos/IMG_3177.MP4",
+                },
+                {
+                  title: "Podcast Highlights",
+                  subtitle: "Multi-cam edits",
+                  videoUrl: "/videos/IMG_3252.MOV",
+                },
+                {
+                  title: "Brand Promos",
+                  subtitle: "Professional videos",
+                  videoUrl: "/videos/IMG_3282.MOV",
+                },
+                {
+                  title: "Interview Edits",
+                  subtitle: "Dynamic storytelling",
+                  videoUrl: "/videos/IMG_3361.MOV",
+                },
+                {
+                  title: "Creative Sequence",
+                  subtitle: "Unique visuals",
+                  videoUrl:
+                    "/videos/WhatsApp Video 2026-02-22 at 10.42.33 PM.mp4",
+                },
+                {
+                  title: "Product Showcase",
+                  subtitle: "Commercial style",
+                  videoUrl:
+                    "/videos/WhatsApp Video 2026-02-22 at 10.42.34 PM.mp4",
+                },
+                {
+                  title: "Promotional Edit",
+                  subtitle: "High impact",
+                  videoUrl:
+                    "/videos/WhatsApp Video 2026-02-22 at 10.42.35 PM.mp4",
+                },
+                {
+                  title: "Visual Storytelling",
+                  subtitle: "Cinematic approach",
+                  videoUrl:
+                    "/videos/WhatsApp Video 2026-02-22 at 10.42.45 PM.mp4",
+                },
+                {
+                  title: "Dynamic Cuts",
+                  subtitle: "Fast pacing",
+                  videoUrl:
+                    "/videos/WhatsApp Video 2026-02-22 at 10.42.51 PM (1).mp4",
+                },
+                {
+                  title: "Smooth Transitions",
+                  subtitle: "Professional polish",
+                  videoUrl:
+                    "/videos/WhatsApp Video 2026-02-22 at 10.42.51 PM.mp4",
+                },
+                {
+                  title: "Audio Synced",
+                  subtitle: "Perfect timing",
+                  videoUrl:
+                    "/videos/WhatsApp Video 2026-02-23 at 1.19.54 AM.mp4",
+                },
+                {
+                  title: "Motion Edit",
+                  subtitle: "Visual effects",
+                  videoUrl:
+                    "/videos/WhatsApp Video 2026-02-22 at 11.13.04 PM.mp4",
+                },
+                {
+                  title: "Short Form Content",
+                  subtitle: "Reels & TikToks",
+                  videoUrl:
+                    "/videos/WhatsApp Video 2026-02-22 at 10.42.29 PM.mp4",
+                },
               ].map((video, idx) => (
                 <div
-                  key={`placeholder-${idx}`}
-                  className="flex-shrink-0 w-[320px] h-[480px] mx-4 rounded-lg overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 relative group"
+                  key={`showcase-${idx}`}
+                  className="flex-shrink-0 w-[280px] h-[420px] md:w-[320px] md:h-[480px] mx-2 rounded-lg overflow-hidden bg-gray-900 relative group hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+                  <video
+                    src={videoUrl(video.videoUrl)}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent z-10" />
                   <div className="absolute top-4 right-4 z-20">
-                    <span className="text-white text-xs font-semibold bg-black/50 px-3 py-1 rounded-full">
-                      {video.logo}
+                    <span className="text-white text-xs font-semibold bg-black/60 px-3 py-1 rounded-full backdrop-blur-sm">
+                      {video.subtitle}
                     </span>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                    <h3 className="text-white font-semibold text-lg mb-1">{video.title}</h3>
-                    <p className="text-gray-300 text-sm">{video.subtitle}</p>
-                  </div>
-                  <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                      <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="absolute inset-0 flex items-center justify-center z-15 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors">
+                      <svg
+                        className="w-8 h-8 text-white ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
                         <path d="M8 5v14l11-7z" />
                       </svg>
                     </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
+                    <h3 className="text-white font-semibold text-base mb-1 group-hover:text-teal-400 transition-colors">
+                      {video.title}
+                    </h3>
+                    <p className="text-gray-400 text-xs">{video.subtitle}</p>
                   </div>
                 </div>
               ))}
@@ -283,7 +385,8 @@ export default function Hero() {
               200+ Videos Edited. 5M+ Views. Countless Happy Clients
             </h2>
             <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
-              Every frame begins with purpose - to engage, to inspire, and to deliver results.
+              Every frame begins with purpose - to engage, to inspire, and to
+              deliver results.
             </p>
           </div>
         </div>

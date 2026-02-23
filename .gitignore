@@ -19,6 +19,9 @@ yarn-error.log*
 # env files
 .env*
 
+# local media (hosted on S3/CloudFront in production)
+public/videos/
+
 # Google service account key (keep out of git)
 portfoliovideo-*.json
 *-credentials.json

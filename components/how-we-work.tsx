@@ -7,36 +7,31 @@ const processSteps = [
     id: 1,
     number: 1,
     title: "Discovery",
-    description:
-      "Understand your content goals and audience.",
+    description: "Understand your content goals and audience.",
   },
   {
     id: 2,
     number: 2,
     title: "Planning",
-    description:
-      "Editing style, references, and creative direction.",
+    description: "Editing style, references, and creative direction.",
   },
   {
     id: 3,
     number: 3,
     title: "Editing",
-    description:
-      "Professional cuts, effects, sound design, and pacing.",
+    description: "Professional cuts, effects, sound design, and pacing.",
   },
   {
     id: 4,
     number: 4,
     title: "Review",
-    description:
-      "Feedback & revisions to perfect the video.",
+    description: "Feedback & revisions to perfect the video.",
   },
   {
     id: 5,
     number: 5,
     title: "Delivery",
-    description:
-      "Export optimized for your platform.",
+    description: "Export optimized for your platform.",
   },
 ];
 
@@ -59,7 +54,7 @@ export default function HowWeWork() {
       const sectionEnd = sectionTop + sectionHeight - windowHeight * 0.5;
       const scrollProgress = Math.max(
         0,
-        Math.min(1, (scrollY - sectionStart) / (sectionEnd - sectionStart))
+        Math.min(1, (scrollY - sectionStart) / (sectionEnd - sectionStart)),
       );
 
       // Determine which steps should be active based on scroll progress
