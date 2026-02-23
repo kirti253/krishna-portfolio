@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { Star, Menu } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDriveVideos } from "@/hooks/use-drive-videos";
+import { DriveVideoPlayer } from "@/components/drive-video-player";
 
 // Optional metadata for hero carousel (by index). Falls back to video name if missing.
 const HERO_VIDEO_META: { title: string; subtitle: string; logo: string }[] = [
@@ -17,8 +18,25 @@ const HERO_VIDEO_META: { title: string; subtitle: string; logo: string }[] = [
 
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [videoSectionInView, setVideoSectionInView] = useState(false);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
   const { videos, loading } = useDriveVideos();
   const displayVideos = loading ? [] : videos;
+
+  useEffect(() => {
+    const el = videoSectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.target === el) setVideoSectionInView(e.isIntersecting);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen pt-14 bg-white font-[var(--font-poppins)] overflow-x-hidden">
@@ -309,7 +327,7 @@ export default function Hero() {
       </div>
 
       {/* Video Showcase Section */}
-      <div className="w-full bg-black py-20 mt-20 overflow-hidden">
+      <div ref={videoSectionRef} className="w-full bg-black py-20 mt-20 overflow-hidden">
         <div className="container mx-auto px-6">
           {/* Video Carousel - videos from Google Drive */}
           <div className="relative overflow-hidden mb-12">
@@ -322,12 +340,11 @@ export default function Hero() {
                         key={`${video.id}-${idx}`}
                         className="flex-shrink-0 w-[320px] h-[480px] mx-4 rounded-lg overflow-hidden bg-gray-900 relative group"
                       >
-                        <iframe
-                          src={`${video.embedUrl}?autoplay=1&mute=1`}
-                          title={video.name}
-                          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                          allow="autoplay"
-                          allowFullScreen
+                        <DriveVideoPlayer
+                          video={video}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          inView={videoSectionInView}
+                          loadDelay={idx * 600}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
                         <div className="absolute top-4 right-4 z-20">

@@ -19,6 +19,11 @@ yarn-error.log*
 # env files
 .env*
 
+# Google service account key (keep out of git)
+portfoliovideo-*.json
+*-credentials.json
+credentials.json
+
 # vercel
 .vercel
 

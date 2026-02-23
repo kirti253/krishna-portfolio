@@ -17,11 +17,15 @@ export function useDriveVideos(): {
     setLoading(true);
     setError(null);
     fetch("/api/drive-videos")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to load videos");
-        return res.json();
+      .then(async (res) => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          const msg = typeof data?.error === "string" ? data.error : data?.details ?? "Failed to load videos";
+          throw new Error(msg);
+        }
+        return data as DriveVideo[];
       })
-      .then((data: DriveVideo[]) => {
+      .then((data) => {
         if (!cancelled) setVideos(Array.isArray(data) ? data : []);
       })
       .catch((e) => {

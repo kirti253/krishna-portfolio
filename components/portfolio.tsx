@@ -1,7 +1,9 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import { useDriveVideos } from "@/hooks/use-drive-videos";
+import { DriveVideoPlayer } from "@/components/drive-video-player";
 
 const partners = [
   {
@@ -31,7 +33,24 @@ const partners = [
 ];
 
 export default function Portfolio() {
+  const [sectionInView, setSectionInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const { videos, loading, error } = useDriveVideos();
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.target === el) setSectionInView(e.isIntersecting);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleCardClick = (videoId: string) => {
     console.log(`Portfolio video ${videoId} clicked`);
@@ -41,7 +60,7 @@ export default function Portfolio() {
   const displayVideos = loading ? [] : videos.length > 0 ? videos : [];
 
   return (
-    <section id="portfolio" className="w-full bg-white py-20 md:py-32">
+    <section ref={sectionRef} id="portfolio" className="w-full bg-white py-20 md:py-32">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* Main Heading */}
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black text-center mb-6">
@@ -89,8 +108,8 @@ export default function Portfolio() {
         {/* Portfolio Items Carousel - videos from Google Drive */}
         <div className="relative overflow-hidden portfolio-carousel-container">
           {error && (
-            <p className="text-center text-amber-600 mb-4 text-sm">
-              Could not load videos. Check Google Drive setup.
+            <p className="text-center text-amber-600 mb-4 text-sm max-w-xl mx-auto">
+              {error}
             </p>
           )}
           <div className="flex animate-scroll-niches gap-4 md:gap-6">
@@ -102,12 +121,11 @@ export default function Portfolio() {
                     onClick={() => handleCardClick(video.id)}
                     className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300"
                   >
-                    <iframe
-                      src={`${video.embedUrl}?autoplay=1&mute=1`}
-                      title={video.name}
-                      className="w-full h-full pointer-events-none"
-                      allow="autoplay"
-                      allowFullScreen
+                    <DriveVideoPlayer
+                      video={video}
+                      className="w-full h-full object-cover"
+                      inView={sectionInView}
+                      loadDelay={idx * 600}
                     />
                     <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium">
                       Before edits/RAW
@@ -122,7 +140,7 @@ export default function Portfolio() {
                     {loading ? (
                       <span className="text-gray-500 text-sm">Loading videos…</span>
                     ) : (
-                      <span className="text-gray-500 text-sm text-center px-2">Add NEXT_PUBLIC_DRIVE_VIDEO_IDS in .env</span>
+                      <span className="text-gray-500 text-sm text-center px-2">Set GOOGLE_DRIVE_FOLDER_ID in .env.local</span>
                     )}
                   </div>
                 ))}
