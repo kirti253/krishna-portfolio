@@ -2,41 +2,10 @@
 
 import Image from "next/image";
 import { Star, Menu } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import { useDriveVideos } from "@/hooks/use-drive-videos";
-import { DriveVideoPlayer } from "@/components/drive-video-player";
-
-// Optional metadata for hero carousel (by index). Falls back to video name if missing.
-const HERO_VIDEO_META: { title: string; subtitle: string; logo: string }[] = [
-  { title: "COSNIK PLASTIC SURGERY", subtitle: "How to reach us", logo: "COSNIK" },
-  { title: "MediSyn Neuro & Gynae Centr", subtitle: "Medical Consultation", logo: "MediSyn" },
-  { title: "Livasa We care for life", subtitle: "Healthcare Services", logo: "Livasa" },
-  { title: "BP Monitoring", subtitle: "सब जानते हैं अगर किसी को बीपी है", logo: "HealthCare" },
-  { title: "Livasa We care for life", subtitle: "Medical Services", logo: "Livasa" },
-  { title: "COSNIK", subtitle: "similar to insulin", logo: "COSNIK" },
-];
+import { useState } from "react";
 
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [videoSectionInView, setVideoSectionInView] = useState(false);
-  const videoSectionRef = useRef<HTMLDivElement>(null);
-  const { videos, loading } = useDriveVideos();
-  const displayVideos = loading ? [] : videos;
-
-  useEffect(() => {
-    const el = videoSectionRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.target === el) setVideoSectionInView(e.isIntersecting);
-        }
-      },
-      { threshold: 0.1, rootMargin: "0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div className="min-h-screen pt-14 bg-white font-[var(--font-poppins)] overflow-x-hidden">
@@ -152,254 +121,169 @@ export default function Hero() {
       </header>
 
       {/* Main Hero Content */}
-      <div className="container mx-auto px-6 py-16 pt-24 max-w-[1600px]">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1.5fr] gap-8 items-center">
-          {/* Left Column */}
+      <div className="container mx-auto px-6 py-16 pt-24 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 items-center">
+          {/* Left Column - I TURN RAW FOOTAGE INTO / SCROLL-STOPPING STORIES */}
           <div className="space-y-8">
             <h1
-              className="text-gray-700 text-5xl md:text-4xl font-semibold uppercase tracking-wide font-[var(--font-poppins)] animate-slideInLeft"
+              className="text-gray-700 text-lg md:text-xl font-semibold uppercase tracking-wide font-[var(--font-poppins)] animate-slideInLeft"
               style={{ animationDelay: "0.2s" }}
             >
-              KRISHNA BHATT
+              I TURN RAW FOOTAGE INTO
             </h1>
-            <h1
-              className="text-7xl md:text-8xl lg:text-9xl font-black text-black uppercase leading-none font-[var(--font-anton)] animate-slideInLeft break-words"
+            <h2
+              className="text-6xl md:text-7xl lg:text-8xl font-black text-black uppercase leading-none font-[var(--font-anton)] animate-slideInLeft break-words"
               style={{ animationDelay: "0.4s" }}
             >
-              DIGITAL
-            </h1>
-            <div className="grid grid-cols-2 gap-3 mt-8">
+              SCROLL-STOPPING STORIES
+            </h2>
+            
+            <div className="flex flex-col gap-4 pt-4">
               <div
-                className="flex items-center gap-2 animate-fadeInUp"
+                className="flex items-center gap-3 animate-fadeInUp"
                 style={{ animationDelay: "0.5s" }}
               >
-                <span className="bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-medium">
-                  LinkedIn
-                </span>
-                <span className="text-black text-sm font-normal">
-                  Growth Specialist
-                </span>
+                <span className="text-2xl">🎬</span>
+                <span className="text-black font-semibold">200+ videos edited</span>
               </div>
               <div
-                className="flex items-center gap-2 animate-fadeInUp"
+                className="flex items-center gap-3 animate-fadeInUp"
                 style={{ animationDelay: "0.6s" }}
               >
-                <span className="bg-red-600 text-white px-4 py-1.5 rounded-full text-sm font-medium">
-                  YouTube
-                </span>
-                <span className="text-black text-sm font-normal">
-                  Channel growth
-                </span>
+                <span className="text-2xl">🚀</span>
+                <span className="text-black font-semibold">5M+ views generated</span>
               </div>
               <div
-                className="flex items-center gap-2 animate-fadeInUp"
+                className="flex items-center gap-3 animate-fadeInUp"
                 style={{ animationDelay: "0.7s" }}
               >
-                <span className="bg-lime-400 text-black px-4 py-1.5 rounded-full text-sm font-medium">
-                  Google Business
-                </span>
-                <span className="text-black text-sm font-normal">
-                  Growth Expert
-                </span>
-              </div>
-              <div
-                className="flex items-center gap-2 animate-fadeInUp"
-                style={{ animationDelay: "0.8s" }}
-              >
-                <span className="bg-black text-white px-4 py-1.5 rounded-full text-sm font-medium">
-                  Instagram
-                </span>
-                <span className="text-black text-sm font-normal">
-                  Handle Pro
-                </span>
+                <span className="text-2xl">⭐</span>
+                <span className="text-black font-semibold">Trusted by creators & startups</span>
               </div>
             </div>
           </div>
 
-          {/* Center Column: Image */}
+          {/* Center Column: Image with Gradient */}
           <div className="flex justify-center">
-            <div className="relative w-80 h-96 rounded-3xl overflow-hidden animate-popUp">
-              <div className="absolute inset-0 bg-gradient-to-b from-teal-400 to-teal-600" />
+            <div
+              className="relative w-80 h-96 rounded-3xl overflow-hidden animate-popUp shadow-2xl"
+              style={{
+                background: "linear-gradient(135deg, #ff9500 0%, #ff6b6b 50%, #ff4757 100%)",
+              }}
+            >
               <Image
                 src="/professional-indian-man-content-creator-portrait-d.jpg"
-                alt="Manjot Singh"
+                alt="Video Editor"
                 fill
-                className="object-cover relative z-10"
+                className="object-cover"
                 priority
               />
             </div>
           </div>
 
-          {/* VIDEO EDITOR - Mobile view (below image) */}
-          <div className="lg:hidden space-y-4 text-center">
-            <h1
-              className="text-6xl md:text-7xl lg:text-8xl font-black text-black uppercase leading-none animate-slideInRight"
-              style={{ animationDelay: "0.3s" }}
-            >
-              VIDEO EDITOR
-            </h1>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-xs mx-auto">
-              I help doctors turn knowledge into stories patients trust.
-            </p>
-            <div
-              className="flex gap-3 justify-center mt-6 animate-fadeInUp"
-              style={{ animationDelay: "0.4s" }}
-            >
-              <span className="bg-teal-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
-                MBA
-              </span>
-              <span className="text-gray-700 text-sm py-2">IMT Ghaziabad</span>
+          {/* Right Column - Video Editor Title & Description */}
+          <div className="space-y-6">
+            <div>
+              <h2
+                className="text-6xl md:text-7xl lg:text-8xl font-black text-black uppercase leading-none font-[var(--font-anton)] animate-slideInRight"
+                style={{ animationDelay: "0.3s" }}
+              >
+                VIDEO<br />EDITOR
+              </h2>
+              <p
+                className="text-gray-600 text-base leading-relaxed mt-4 max-w-sm animate-fadeInUp"
+                style={{ animationDelay: "0.5s" }}
+              >
+                I help creators, brands, and businesses turn footage into scroll-stopping stories.
+              </p>
             </div>
-            <div
-              className="flex flex-wrap gap-3 justify-center animate-fadeInUp"
-              style={{ animationDelay: "0.5s" }}
-            >
-              <span className="bg-teal-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
-                Google Digital Marketing
-              </span>
-              <span className="text-gray-700 text-sm py-2">Certified</span>
-            </div>
-          </div>
 
-          {/* Right Column - Desktop only */}
-          <div className="space-y-7 overflow-visible hidden lg:block">
-            <h1
-              className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mt-10 text-black uppercase leading-none whitespace-nowrap animate-slideInRight"
-              style={{ animationDelay: "0.3s" }}
-            >
-              VIDEO EDITOR
-            </h1>
-            <p className="text-gray-600 text-sm leading-relaxed  max-w-xs">
-              I help doctors turn knowledge into stories patients trust.
-            </p>
-            <div
-              className="flex gap-3 justify-start mt-6 animate-fadeInUp"
-              style={{ animationDelay: "0.4s" }}
-            >
-              <span className="bg-teal-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
-                MBA
-              </span>
-              <span className="text-gray-700 text-sm py-2">IMT Ghaziabad</span>
+            {/* Certifications/Stats */}
+            <div className="flex flex-wrap gap-3 pt-4">
+              <div
+                className="flex items-center gap-2 animate-fadeInUp"
+                style={{ animationDelay: "0.6s" }}
+              >
+                <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                  200+
+                </span>
+                <span className="text-gray-700 text-sm font-medium">Videos Edited</span>
+              </div>
+              <div
+                className="flex items-center gap-2 animate-fadeInUp"
+                style={{ animationDelay: "0.7s" }}
+              >
+                <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                  5M+
+                </span>
+                <span className="text-gray-700 text-sm font-medium">Views Generated</span>
+              </div>
             </div>
-            <div
-              className="flex flex-wrap gap-3 justify-start animate-fadeInUp"
-              style={{ animationDelay: "0.5s" }}
-            >
-              <span className="bg-teal-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
-                Google Digital Marketing
-              </span>
-              <span className="text-gray-700 text-sm py-2">Certified</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Bottom Section: Social Proof */}
-      <div className="container mx-auto px-6 pb-12">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-          {/* Left: Trusted By */}
-          <div className="flex items-center gap-4">
-            <div className="flex -space-x-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 border-2 border-white" />
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-teal-700 border-2 border-white" />
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-300 to-teal-500 border-2 border-white" />
-            </div>
-            <span className="text-gray-600 font-bold text-sm">
-              Trusted by 120+ Healthcare Founders
-            </span>
-          </div>
-
-          {/* Right: Rating */}
-          <div className="flex items-center gap-3">
-            <span className="text-gray-600 font-medium text-sm">
-              RATED EXCELLENT:
-            </span>
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                />
-              ))}
+            {/* CTA Buttons */}
+            <div
+              className="flex flex-wrap gap-3 pt-4 animate-fadeInUp"
+              style={{ animationDelay: "0.8s" }}
+            >
+              <button className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-colors">
+                View Portfolio
+              </button>
+              <button className="bg-gray-200 hover:bg-gray-300 text-gray-900 px-6 py-2 rounded-full text-sm font-semibold transition-colors">
+                Get Your Video Edited
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Video Showcase Section */}
-      <div ref={videoSectionRef} className="w-full bg-black py-20 mt-20 overflow-hidden">
+      {/* Video Showcase Section */}
+      <div className="w-full bg-black py-20 mt-20 overflow-hidden">
         <div className="container mx-auto px-6">
-          {/* Video Carousel - videos from Google Drive */}
+          {/* Video Carousel Placeholder */}
           <div className="relative overflow-hidden mb-12">
             <div className="flex animate-scroll">
-              {displayVideos.length > 0
-                ? [...displayVideos, ...displayVideos].map((video, idx) => {
-                    const meta = HERO_VIDEO_META[idx % HERO_VIDEO_META.length];
-                    return (
-                      <div
-                        key={`${video.id}-${idx}`}
-                        className="flex-shrink-0 w-[320px] h-[480px] mx-4 rounded-lg overflow-hidden bg-gray-900 relative group"
-                      >
-                        <DriveVideoPlayer
-                          video={video}
-                          className="absolute inset-0 w-full h-full object-cover"
-                          inView={videoSectionInView}
-                          loadDelay={idx * 600}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-                        <div className="absolute top-4 right-4 z-20">
-                          <span className="text-white text-xs font-semibold bg-black/50 px-3 py-1 rounded-full">
-                            {meta?.logo ?? video.name.slice(0, 8)}
-                          </span>
-                        </div>
-                        <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                          <h3 className="text-white font-semibold text-lg mb-1">
-                            {meta?.title ?? video.name}
-                          </h3>
-                          <p className="text-gray-300 text-sm">{meta?.subtitle ?? ""}</p>
-                        </div>
-                      </div>
-                    );
-                  })
-                : [...HERO_VIDEO_META, ...HERO_VIDEO_META].map((video, idx) => (
-                    <div
-                      key={`placeholder-${idx}`}
-                      className="flex-shrink-0 w-[320px] h-[480px] mx-4 rounded-lg overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 relative group"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-                      <div className="absolute top-4 right-4 z-20">
-                        <span className="text-white text-xs font-semibold bg-black/50 px-3 py-1 rounded-full">
-                          {video.logo}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                        <h3 className="text-white font-semibold text-lg mb-1">{video.title}</h3>
-                        <p className="text-gray-300 text-sm">{video.subtitle}</p>
-                      </div>
-                      <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
-                        {loading ? (
-                          <span className="text-gray-400 text-sm">Loading…</span>
-                        ) : (
-                          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                            <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z" />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
+              {[
+                { title: "Short Form Content", subtitle: "Reels & TikToks", logo: "SF" },
+                { title: "YouTube Editing", subtitle: "Long-form videos", logo: "YT" },
+                { title: "Podcast Highlights", subtitle: "Multi-cam edits", logo: "PH" },
+                { title: "Brand Promos", subtitle: "Professional videos", logo: "BP" },
+                { title: "Motion Graphics", subtitle: "Animations & effects", logo: "MG" },
+                { title: "Short Form Content", subtitle: "Reels & TikToks", logo: "SF" },
+              ].map((video, idx) => (
+                <div
+                  key={`placeholder-${idx}`}
+                  className="flex-shrink-0 w-[320px] h-[480px] mx-4 rounded-lg overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 relative group"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+                  <div className="absolute top-4 right-4 z-20">
+                    <span className="text-white text-xs font-semibold bg-black/50 px-3 py-1 rounded-full">
+                      {video.logo}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                    <h3 className="text-white font-semibold text-lg mb-1">{video.title}</h3>
+                    <p className="text-gray-300 text-sm">{video.subtitle}</p>
+                  </div>
+                  <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
                     </div>
-                  ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Text Content */}
           <div className="text-center space-y-4">
             <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold">
-              500+ Doctor Stories. 10M+ Views. Countless Patients Reached
+              200+ Videos Edited. 5M+ Views. Countless Happy Clients
             </h2>
             <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
-              Every frame here began with a doctor's purpose - to help, to heal,
-              to educate.
+              Every frame begins with purpose - to engage, to inspire, and to deliver results.
             </p>
           </div>
         </div>

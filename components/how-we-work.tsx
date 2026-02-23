@@ -6,37 +6,37 @@ const processSteps = [
   {
     id: 1,
     number: 1,
-    title: "Consult & Strategize",
+    title: "Discovery",
     description:
-      "Align your goals and audience - the foundation for 10M+ trusted views.",
+      "Understand your content goals and audience.",
   },
   {
     id: 2,
     number: 2,
-    title: "Script & Storyboard",
+    title: "Planning",
     description:
-      "Transform complex facts into simple, relatable stories with 3x higher engagement.",
+      "Editing style, references, and creative direction.",
   },
   {
     id: 3,
     number: 3,
-    title: "Produce & Edit",
+    title: "Editing",
     description:
-      "High-precision visuals and sound - built for 500+ doctor brands and hospitals.",
+      "Professional cuts, effects, sound design, and pacing.",
   },
   {
     id: 4,
     number: 4,
-    title: "Publish & Engage",
+    title: "Review",
     description:
-      "Content optimized for reach and recall across YouTube, Instagram, and Reels.",
+      "Feedback & revisions to perfect the video.",
   },
   {
     id: 5,
     number: 5,
-    title: "Measure & Grow",
+    title: "Delivery",
     description:
-      "Track results, refine performance, and sustain long-term patient trust.",
+      "Export optimized for your platform.",
   },
 ];
 

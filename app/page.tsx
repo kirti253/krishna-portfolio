@@ -1,4 +1,5 @@
 import Hero from "@/components/hero";
+import About from "@/components/about";
 import Services from "../components/services";
 import Niches from "@/components/niches";
 import Portfolio from "@/components/portfolio";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <div className="w-full overflow-x-hidden">
       <Hero />
+      <About />
       <Services />
       <Niches />
       <Portfolio />

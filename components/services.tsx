@@ -2,52 +2,52 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Hand, Trophy, BarChart3, Globe, TrendingUp } from "lucide-react";
+import { Film, Youtube, Podcast, Sparkles, Zap } from "lucide-react";
 
 const services = [
   {
     id: 1,
-    title: "Visual Production",
+    title: "Short Form Content Editing",
     description:
-      "Professional photoshoots and video shoots that bring stories to life. We create compelling visual content tailored for healthcare brands, ensuring every frame reflects trust and professionalism.",
-    icon: Hand,
-    imagePlaceholder: "Visual Production Image",
+      "Reels, Shorts, TikTok videos optimized for retention and virality. I craft punchy edits with fast pacing and engaging transitions that keep viewers watching and sharing.",
+    icon: Zap,
+    imagePlaceholder: "Short Form Content Image",
     imageOnLeft: true,
   },
   {
     id: 2,
-    title: "Professional Photoshoots",
+    title: "YouTube Video Editing",
     description:
-      "High-quality photos to elevate your brand instantly. Our expert photographers capture the essence of your practice, creating images that build trust and showcase real expertise.",
-    icon: Trophy,
-    imagePlaceholder: "Professional Photoshoots Image",
+      "Long-form storytelling, pacing, motion graphics, and engagement edits. From vlogs to documentaries, I create compelling YouTube content that keeps audiences engaged.",
+    icon: Youtube,
+    imagePlaceholder: "YouTube Editing Image",
     imageOnLeft: false,
   },
   {
     id: 3,
-    title: "Modern Websites for Doctors",
+    title: "Brand & Promo Videos",
     description:
-      "We design fast, SEO-friendly, and patient-focused websites that build trust, showcase expertise, and turn visitors into appointments. Your digital presence matters.",
-    icon: BarChart3,
-    imagePlaceholder: "Modern Websites Image",
+      "Professional promotional edits that elevate your brand identity. Create stunning brand videos that tell your story and convert viewers into customers.",
+    icon: Film,
+    imagePlaceholder: "Brand Videos Image",
     imageOnLeft: true,
   },
   {
     id: 4,
-    title: "Videos & Social Media Content",
+    title: "Podcast Editing",
     description:
-      "Engaging content for YouTube, Instagram, and Reels. From educational explainers to patient testimonials, we create content that connects with your audience and drives engagement.",
-    icon: Globe,
-    imagePlaceholder: "Social Media Content Image",
+      "Multi-cam edits, audio cleanup, highlights & shorts creation. Transform your podcast episodes into engaging video content across all platforms.",
+    icon: Podcast,
+    imagePlaceholder: "Podcast Editing Image",
     imageOnLeft: false,
   },
   {
     id: 5,
-    title: "Digital Marketing Strategy",
+    title: "Motion Graphics & Subtitles",
     description:
-      "Comprehensive digital marketing solutions that grow your practice. We combine data-driven insights with creative storytelling to reach more patients and build lasting relationships.",
-    icon: TrendingUp,
-    imagePlaceholder: "Digital Marketing Image",
+      "Captions, animations, callouts, and branded overlays. Add visual flair to your content with professional motion graphics and perfectly timed subtitles.",
+    icon: Sparkles,
+    imagePlaceholder: "Motion Graphics Image",
     imageOnLeft: true,
   },
 ];
