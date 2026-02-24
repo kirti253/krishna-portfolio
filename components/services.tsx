@@ -11,7 +11,8 @@ const services = [
     description:
       "Reels, Shorts, TikTok videos optimized for retention and virality. I craft punchy edits with fast pacing and engaging transitions that keep viewers watching and sharing.",
     icon: Zap,
-    imagePlaceholder: "Short Form Content Image",
+    image: "/shortformcontent.jpeg",
+    imagePlaceholder: "Short Form Content",
     imageOnLeft: true,
     color: "from-blue-500 to-cyan-500",
   },
@@ -21,7 +22,8 @@ const services = [
     description:
       "Long-form storytelling, pacing, motion graphics, and engagement edits. From vlogs to documentaries, I create compelling YouTube content that keeps audiences engaged.",
     icon: Youtube,
-    imagePlaceholder: "YouTube Editing Image",
+    image: "/youtubevideo.jpeg",
+    imagePlaceholder: "YouTube Editing",
     imageOnLeft: false,
     color: "from-red-500 to-orange-500",
   },
@@ -31,7 +33,8 @@ const services = [
     description:
       "Professional promotional edits that elevate your brand identity. Create stunning brand videos that tell your story and convert viewers into customers.",
     icon: Film,
-    imagePlaceholder: "Brand Videos Image",
+    image: "/brandpromo.jpeg",
+    imagePlaceholder: "Brand & Promo",
     imageOnLeft: true,
     color: "from-purple-500 to-pink-500",
   },
@@ -41,7 +44,8 @@ const services = [
     description:
       "Multi-cam edits, audio cleanup, highlights & shorts creation. Transform your podcast episodes into engaging video content across all platforms.",
     icon: Podcast,
-    imagePlaceholder: "Podcast Editing Image",
+    image: "/podcastediting.jpeg",
+    imagePlaceholder: "Podcast Editing",
     imageOnLeft: false,
     color: "from-green-500 to-emerald-500",
   },
@@ -51,7 +55,8 @@ const services = [
     description:
       "Captions, animations, callouts, and branded overlays. Add visual flair to your content with professional motion graphics and perfectly timed subtitles.",
     icon: Sparkles,
-    imagePlaceholder: "Motion Graphics Image",
+    image: "/motiongraphihc.jpeg",
+    imagePlaceholder: "Motion Graphics",
     imageOnLeft: true,
     color: "from-indigo-500 to-violet-500",
   },
@@ -251,7 +256,7 @@ export default function Services() {
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div
-                    className={`w-full max-w-4xl bg-white rounded-3xl p-6 md:p-10 lg:p-12 shadow-lg border border-gray-100 transition-all duration-500 cursor-pointer group ${
+                    className={`w-full max-w-4xl bg-white/95 backdrop-blur-sm rounded-3xl p-6 md:p-10 lg:p-12 shadow-lg border border-gray-100 transition-all duration-500 cursor-pointer group ${
                       isVisible
                         ? isLeftAligned
                           ? "animate-slideInLeft"
@@ -275,10 +280,16 @@ export default function Services() {
                       transformStyle: "preserve-3d",
                     }}
                   >
-                    <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+                    <div
+                      className={`flex flex-col ${
+                        service.imageOnLeft
+                          ? "md:flex-row"
+                          : "md:flex-row-reverse"
+                      } gap-6 md:gap-8 items-start`}
+                    >
                       {/* Image Container */}
                       <div
-                        className={`relative w-full md:w-1/2 h-[300px] md:h-[400px] lg:h-[450px] flex-shrink-0 border-[4px] border-teal-500 rounded-[30px_30px_15px_15px] overflow-hidden shadow-md group ${
+                        className={`relative w-full md:w-1/2 h-[260px] md:h-[340px] lg:h-[380px] flex-shrink-0 border-[3px] border-teal-500/80 rounded-[26px_26px_18px_18px] overflow-hidden shadow-md group ${
                           isVisible
                             ? "opacity-100 scale-100"
                             : "opacity-0 scale-75"
@@ -292,13 +303,16 @@ export default function Services() {
                           }`,
                         }}
                       >
-                        <div
-                          className={`w-full h-full bg-gradient-to-br ${service.color} flex items-center justify-center relative overflow-hidden`}
-                        >
-                          <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-white transition-opacity duration-300" />
-                          <div className="text-white text-base md:text-lg font-medium text-center px-2 relative z-10">
-                            {service.imagePlaceholder}
-                          </div>
+                        <Image
+                          src={service.image}
+                          alt={service.imagePlaceholder}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          sizes="(min-width: 1024px) 50vw, 100vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                        <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-full text-sm font-medium z-10">
+                          {service.imagePlaceholder}
                         </div>
                       </div>
 
