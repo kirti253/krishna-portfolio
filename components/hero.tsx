@@ -72,9 +72,12 @@ export default function Hero() {
           </div>
 
           {/* Contact Button */}
-          <button className="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600 transition-colors text-lg">
+          <a
+            href="#contact"
+            className="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600 transition-colors text-lg"
+          >
             Contact
-          </button>
+          </a>
         </nav>
 
         {/* Mobile Menu Dropdown */}
@@ -240,12 +243,18 @@ export default function Hero() {
               className="flex flex-wrap gap-3 pt-4 animate-fadeInUp"
               style={{ animationDelay: "0.8s" }}
             >
-              <button className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-colors">
+              <a
+                href="#portfolio"
+                className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-colors"
+              >
                 View Portfolio
-              </button>
-              <button className="bg-gray-200 hover:bg-gray-300 text-gray-900 px-6 py-2 rounded-full text-sm font-semibold transition-colors">
+              </a>
+              <a
+                href="#contact"
+                className="bg-gray-200 hover:bg-gray-300 text-gray-900 px-6 py-2 rounded-full text-sm font-semibold transition-colors"
+              >
                 Get Your Video Edited
-              </button>
+              </a>
             </div>
           </div>
         </div>

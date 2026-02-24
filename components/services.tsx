@@ -15,6 +15,7 @@ const services = [
     imagePlaceholder: "Short Form Content",
     imageOnLeft: true,
     color: "from-blue-500 to-cyan-500",
+    href: "#portfolio",
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ const services = [
     imagePlaceholder: "YouTube Editing",
     imageOnLeft: false,
     color: "from-red-500 to-orange-500",
+    href: "#portfolio",
   },
   {
     id: 3,
@@ -37,6 +39,7 @@ const services = [
     imagePlaceholder: "Brand & Promo",
     imageOnLeft: true,
     color: "from-purple-500 to-pink-500",
+    href: "#portfolio",
   },
   {
     id: 4,
@@ -48,6 +51,7 @@ const services = [
     imagePlaceholder: "Podcast Editing",
     imageOnLeft: false,
     color: "from-green-500 to-emerald-500",
+    href: "#portfolio",
   },
   {
     id: 5,
@@ -59,6 +63,7 @@ const services = [
     imagePlaceholder: "Motion Graphics",
     imageOnLeft: true,
     color: "from-indigo-500 to-violet-500",
+    href: "#contact",
   },
 ];
 
@@ -365,7 +370,8 @@ export default function Services() {
                         </p>
 
                         {/* Hover CTA */}
-                        <div
+                        <a
+                          href={service.href}
                           className={`mt-6 inline-flex items-center gap-2 text-teal-600 font-semibold transition-all duration-300 transform ${
                             isHovered
                               ? "translate-x-2 opacity-100"
@@ -376,7 +382,7 @@ export default function Services() {
                           <span className="text-lg transform transition-transform group-hover:translate-x-1">
                             →
                           </span>
-                        </div>
+                        </a>
                       </div>
                     </div>
                   </div>
