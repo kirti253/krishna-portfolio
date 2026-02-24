@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-
+import Image from "next/image";
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -42,7 +42,12 @@ export default function About() {
             <div className="relative w-full max-w-md h-[400px] rounded-3xl overflow-hidden bg-gradient-to-br from-teal-400 to-teal-600">
               <div className="absolute inset-0 bg-gradient-to-br from-teal-400/80 to-teal-600/80 z-10" />
               <div className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold z-20">
-                🎬
+                <Image
+                  src="/heroimage.jpeg"
+                  alt="About Me"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
