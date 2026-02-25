@@ -39,19 +39,19 @@ export default function Portfolio() {
       id: 2,
       label: "Content Showcase",
       category: "Reel",
-      videoUrl: "/videos/IMG_3252.MOV",
+      videoUrl: "",
     },
     {
       id: 3,
       label: "Project Footage",
       category: "Video",
-      videoUrl: "/videos/IMG_3282.MOV",
+      videoUrl: "",
     },
     {
       id: 4,
       label: "Interview Highlights",
       category: "Interview",
-      videoUrl: "/videos/IMG_3361.MOV",
+      videoUrl: "",
     },
     {
       id: 5,
