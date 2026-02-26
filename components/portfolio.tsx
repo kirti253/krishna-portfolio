@@ -147,33 +147,40 @@ export default function Portfolio() {
         <div className="relative overflow-hidden portfolio-carousel-container">
           <div className="flex animate-scroll-niches gap-4 md:gap-6">
             {/* Portfolio items - duplicated for seamless loop */}
-            {[...portfolioItems, ...portfolioItems].map((item, idx) => (
-              <div
-                key={`${item.id}-${idx}`}
-                onClick={() => handleCardClick(item.id)}
-                className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300 bg-black flex items-center justify-center"
-              >
-                <video
-                  src={videoUrl(item.videoUrl)}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center group-hover:bg-white/100 transition-all duration-300">
-                    <div className="text-black text-3xl font-bold ml-1">▶</div>
+            {[...portfolioItems, ...portfolioItems].map((item, idx) => {
+              const finalVideoUrl = videoUrl(item.videoUrl);
+              return (
+                <div
+                  key={`${item.id}-${idx}`}
+                  onClick={() => handleCardClick(item.id)}
+                  className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300 bg-black flex items-center justify-center"
+                >
+                  {finalVideoUrl && (
+                    <video
+                      src={finalVideoUrl}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center group-hover:bg-white/100 transition-all duration-300">
+                      <div className="text-black text-3xl font-bold ml-1">
+                        ▶
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-teal-500/90 transition-all duration-300">
+                    {item.category}
+                  </div>
+                  <div className="absolute top-4 right-4 bg-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {item.label}
                   </div>
                 </div>
-                <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-teal-500/90 transition-all duration-300">
-                  {item.category}
-                </div>
-                <div className="absolute top-4 right-4 bg-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {item.label}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

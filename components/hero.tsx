@@ -63,12 +63,6 @@ export default function Hero() {
             >
               Portfolio
             </a>
-            <a
-              href="#faqs"
-              className="text-gray-800 hover:text-black transition-colors text-sm font-medium"
-            >
-              FAQs
-            </a>
           </div>
 
           {/* Contact Button */}
