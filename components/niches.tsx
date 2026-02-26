@@ -3,25 +3,43 @@
 import { Users } from "lucide-react";
 
 const niches = [
-  { id: 1, label: "Neurosurgeon", highlighted: false },
-  { id: 2, label: "Gynaec", highlighted: false },
-  { id: 3, label: "Medical tech", highlighted: false },
-  { id: 4, label: "IVF Experts", highlighted: false },
-  { id: 5, label: "Dermatologists & Skin Clinics", highlighted: true },
-  { id: 6, label: "IVF Awareness Videos", highlighted: false },
-  { id: 7, label: "Hospital Promo Films", highlighted: true },
-  { id: 8, label: "Dental Patient Stories", highlighted: false },
-  { id: 9, label: "Skin Clinic Reels", highlighted: false },
-  { id: 10, label: "Explainer Videos", highlighted: false },
-  { id: 11, label: "Treatment Awareness Campaigns", highlighted: false },
-  { id: 12, label: "Webinar", highlighted: false },
-  { id: 13, label: "Medical Podcast Production", highlighted: true },
-  { id: 14, label: "Social Media Reels & Shorts", highlighted: false },
-  { id: 15, label: "Medical Animations (3D / 2D)", highlighted: false },
-  { id: 16, label: "icon", isIcon: true, highlighted: false },
-  { id: 17, label: "Cardiologist", highlighted: false },
-  { id: 18, label: "Pediatric Care", highlighted: false },
-  { id: 19, label: "Mental Health Awareness", highlighted: false },
+  // Industry Niches
+  { id: 1, label: "YouTubers & Creators", highlighted: true },
+  { id: 2, label: "Coaches & Educators", highlighted: false },
+  { id: 3, label: "Startups & Brands", highlighted: true },
+  { id: 4, label: "Influencers & Personal Brands", highlighted: true },
+  { id: 5, label: "Real Estate Videos", highlighted: false },
+  { id: 6, label: "Fitness & Lifestyle Creators", highlighted: false },
+  { id: 7, label: "Podcast Creators", highlighted: false },
+  { id: 8, label: "E-commerce Brands", highlighted: false },
+  // Video Types
+  { id: 9, label: "YouTube Long-form Edits", highlighted: true },
+  { id: 10, label: "Short-form Reels & Shorts", highlighted: true },
+  { id: 11, label: "Podcast Video Editing", highlighted: false },
+  { id: 12, label: "Talking Head Videos", highlighted: false },
+  { id: 13, label: "Vlogs & Travel Films", highlighted: false },
+  { id: 14, label: "Gaming Highlights", highlighted: false },
+  { id: 15, label: "Corporate Videos", highlighted: false },
+  { id: 16, label: "Webinar Recordings", highlighted: false },
+  // Growth & Marketing Content
+  { id: 17, label: "Social Media Ads", highlighted: true },
+  { id: 18, label: "Product Promo Videos", highlighted: false },
+  { id: 19, label: "Explainer Videos", highlighted: false },
+  { id: 20, label: "Brand Story Videos", highlighted: false },
+  { id: 21, label: "Launch Campaign Videos", highlighted: false },
+  { id: 22, label: "Course Content Editing", highlighted: false },
+  { id: 23, label: "Client Testimonial Videos", highlighted: false },
+  { id: 24, label: "Funnel Videos", highlighted: false },
+  // Creative / Advanced
+  { id: 25, label: "Motion Graphics Videos", highlighted: true },
+  { id: 26, label: "Cinematic Edits", highlighted: true },
+  { id: 27, label: "Color Grading Projects", highlighted: false },
+  { id: 28, label: "Sound Design Edits", highlighted: false },
+  { id: 29, label: "AI-enhanced Edits", highlighted: false },
+  { id: 30, label: "Documentary Style Edits", highlighted: false },
+  { id: 31, label: "Event Highlights", highlighted: false },
+  { id: 32, label: "Wedding Films", highlighted: false },
+  { id: 33, label: "icon", isIcon: true, highlighted: false },
 ];
 
 export default function Niches() {
@@ -40,14 +58,14 @@ export default function Niches() {
 
         {/* Main Title */}
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6 leading-tight">
-          Each specialty is distinct. I speak your{" "}
-          <span className="font-black">Expertise's</span> language.
+          Each niche has a story. I craft visuals that speak your{" "}
+          <span className="font-black">brand's language.</span>
         </h2>
 
         {/* Supporting Paragraph */}
         <p className="text-gray-300 text-lg md:text-xl text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          No matter your field, our experience spans multiple niches, ensuring
-          we understand your specific needs and challenges.
+          No matter your industry, my editing expertise spans multiple content
+          styles — ensuring your videos connect, engage, and convert.
         </p>
 
         {/* Horizontal Scrolling Carousel */}
