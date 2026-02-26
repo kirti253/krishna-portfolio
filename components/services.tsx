@@ -283,7 +283,7 @@ export default function Services() {
                           }deg) rotateY(${
                             isLeftAligned ? 30 : -30
                           }deg) translateY(50px) scale(0.8)`,
-                      opacity: isVisible ? Math.max(0.6, progress) : 0,
+                      opacity: isVisible ? 1 : 0,
                       transformStyle: "preserve-3d",
                     }}
                   >

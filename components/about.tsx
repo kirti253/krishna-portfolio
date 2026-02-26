@@ -38,15 +38,17 @@ export default function About() {
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left Column: Image */}
-          <div className="flex justify-center">
-            <div className="relative w-full max-w-md h-[400px] rounded-3xl overflow-hidden bg-gradient-to-br from-teal-400 to-teal-600">
+          <div
+            className={`flex justify-center transition-all duration-700 ${isVisible ? "animate-zoomIn" : "opacity-0 scale-50"}`}
+          >
+            <div className="relative w-full max-w-md h-[400px] rounded-3xl overflow-hidden bg-gradient-to-br from-teal-400 to-teal-600 hover:shadow-2xl transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-teal-400/80 to-teal-600/80 z-10" />
               <div className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold z-20">
                 <Image
                   src="/heroimage.jpeg"
                   alt="About Me"
                   fill
-                  className="object-cover"
+                  className="object-cover hover:scale-110 transition-transform duration-700"
                 />
               </div>
             </div>
@@ -54,7 +56,7 @@ export default function About() {
 
           {/* Right Column: Content */}
           <div
-            className={`space-y-6 ${isVisible ? "animate-fadeInUp" : "opacity-0"}`}
+            className={`space-y-6 transition-all duration-700 ${isVisible ? "animate-fadeInUp" : "opacity-0 translate-y-10"}`}
           >
             <div>
               <h2 className="text-4xl md:text-5xl lg:text-5xl font-black text-black mb-6">
@@ -73,8 +75,11 @@ export default function About() {
 
             {/* Skills/Expertise */}
             <div className="pt-4 space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold flex-shrink-0 mt-1">
+              <div
+                className={`flex items-start gap-4 transition-all duration-500 ${isVisible ? "animate-slideUp" : "opacity-0 translate-y-4"}`}
+                style={{ transitionDelay: "200ms" }}
+              >
+                <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold flex-shrink-0 mt-1 animate-pulse-glow">
                   ✓
                 </div>
                 <div>
@@ -86,8 +91,11 @@ export default function About() {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold flex-shrink-0 mt-1">
+              <div
+                className={`flex items-start gap-4 transition-all duration-500 ${isVisible ? "animate-slideUp" : "opacity-0 translate-y-4"}`}
+                style={{ transitionDelay: "300ms" }}
+              >
+                <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold flex-shrink-0 mt-1 animate-pulse-glow">
                   ✓
                 </div>
                 <div>
@@ -99,8 +107,11 @@ export default function About() {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold flex-shrink-0 mt-1">
+              <div
+                className={`flex items-start gap-4 transition-all duration-500 ${isVisible ? "animate-slideUp" : "opacity-0 translate-y-4"}`}
+                style={{ transitionDelay: "400ms" }}
+              >
+                <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold flex-shrink-0 mt-1 animate-pulse-glow">
                   ✓
                 </div>
                 <div>
@@ -115,8 +126,11 @@ export default function About() {
             </div>
 
             {/* CTA Button */}
-            <div className="pt-4">
-              <button className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-full font-medium transition-colors">
+            <div
+              className={`pt-4 transition-all duration-500 ${isVisible ? "animate-slideUp" : "opacity-0 translate-y-4"}`}
+              style={{ transitionDelay: "500ms" }}
+            >
+              <button className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg animate-bounce-subtle">
                 Let's Create Together
               </button>
             </div>

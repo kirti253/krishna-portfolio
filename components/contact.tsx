@@ -3,35 +3,74 @@
 import Image from "next/image";
 import { Mail, Instagram, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect, useRef } from "react";
 
 export default function Contact() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="contact" className="w-full bg-white py-20 md:py-32">
+    <section
+      ref={sectionRef}
+      id="contact"
+      className="w-full bg-white py-20 md:py-32"
+    >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
           {/* Left Column */}
           <div className="space-y-8">
             {/* Header */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-tight">
+            <h2
+              className={`text-4xl md:text-5xl lg:text-6xl font-black text-black leading-tight transition-all duration-700 ${isVisible ? "animate-slideUp" : "opacity-0 translate-y-10"}`}
+            >
               Ready to Tell Your Story
             </h2>
-            <p className="text-gray-600 text-lg md:text-xl">
+            <p
+              className={`text-gray-600 text-lg md:text-xl transition-all duration-700 ${isVisible ? "animate-fadeInUp" : "opacity-0 translate-y-6"}`}
+              style={{ transitionDelay: "100ms" }}
+            >
               Because in content creation, storytelling is the real
               differentiator.
             </p>
 
             {/* Profile Card */}
-            <div className="bg-black rounded-2xl p-8 md:p-10 space-y-6">
+            <div
+              className={`bg-black rounded-2xl p-8 md:p-10 space-y-6 transition-all duration-700 ${isVisible ? "animate-scaleUp" : "scale-75 opacity-0"}`}
+              style={{ transitionDelay: "200ms" }}
+            >
               {/* Profile Image */}
               <div className="flex justify-center">
-                <div className="relative w-32 h-32 md:w-40 md:h-40">
-                  <div className="absolute inset-0 bg-gradient-to-b from-teal-400 to-teal-600 rounded-full"></div>
+                <div className="relative w-32 h-32 md:w-40 md:h-40 hover:scale-110 transition-transform duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-b from-teal-400 to-teal-600 rounded-full animate-pulse-glow"></div>
                   <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-teal-500">
                     <Image
                       src="/professional-indian-man-content-creator-portrait-d.jpg"
                       alt="Krishna Bhatt"
                       fill
-                      className="object-cover"
+                      className="object-cover hover:scale-125 transition-transform duration-500"
                     />
                   </div>
                 </div>
@@ -49,10 +88,10 @@ export default function Contact() {
                 </p>
                 <Button
                   asChild
-                  className="bg-black border-2 border-white text-white px-6 py-6 text-base md:text-lg font-medium rounded-full mt-6 hover:bg-gray-900"
+                  className="bg-black border-2 border-white text-white px-6 py-6 text-base md:text-lg font-medium rounded-full mt-6 hover:bg-gray-900 hover:scale-105 transition-all duration-300"
                 >
                   <a href="#portfolio">
-                    <div className="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-2">
+                    <div className="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center mr-2 group-hover:animate-pulse-glow">
                       <ArrowRight className="w-4 h-4 text-white" />
                     </div>
                     View Portfolio
@@ -63,7 +102,10 @@ export default function Contact() {
           </div>
 
           {/* Right Column - Contact Options */}
-          <div className="bg-stone-100 rounded-2xl p-6 md:p-8 lg:p-10 mt-8 md:mt-12">
+          <div
+            className={`bg-stone-100 rounded-2xl p-6 md:p-8 lg:p-10 mt-8 md:mt-12 transition-all duration-700 ${isVisible ? "animate-slideUp" : "opacity-0 translate-y-10"}`}
+            style={{ transitionDelay: "150ms" }}
+          >
             <h3 className="text-3xl md:text-4xl font-bold text-black mb-8 text-center">
               Get in Touch
             </h3>
@@ -72,10 +114,11 @@ export default function Contact() {
               {/* Email Contact */}
               <a
                 href="mailto:krishnabhatt4545@gmail.com"
-                className="flex items-center gap-4 p-6 bg-white rounded-xl border-2 border-gray-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300 group"
+                className={`flex items-center gap-4 p-6 bg-white rounded-xl border-2 border-gray-200 hover:border-teal-500 hover:shadow-lg hover:scale-105 transition-all duration-300 group ${isVisible ? "animate-slideLeft" : "opacity-0"}`}
+                style={{ transitionDelay: "300ms" }}
               >
-                <div className="w-14 h-14 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0 group-hover:bg-teal-600 transition-colors">
-                  <Mail className="w-7 h-7 text-white" />
+                <div className="w-14 h-14 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0 group-hover:bg-teal-600 transition-colors animate-pulse-glow">
+                  <Mail className="w-7 h-7 text-white group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="flex-1">
                   <h4 className="text-lg font-bold text-black mb-1">
@@ -93,10 +136,11 @@ export default function Contact() {
                 href="https://www.instagram.com/visualsbykrishhh/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-6 bg-white rounded-xl border-2 border-gray-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300 group"
+                className={`flex items-center gap-4 p-6 bg-white rounded-xl border-2 border-gray-200 hover:border-teal-500 hover:shadow-lg hover:scale-105 transition-all duration-300 group ${isVisible ? "animate-slideLeft" : "opacity-0"}`}
+                style={{ transitionDelay: "400ms" }}
               >
-                <div className="w-14 h-14 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0 group-hover:bg-teal-600 transition-colors">
-                  <Instagram className="w-7 h-7 text-white" />
+                <div className="w-14 h-14 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0 group-hover:bg-teal-600 transition-colors animate-pulse-glow">
+                  <Instagram className="w-7 h-7 text-white group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="flex-1">
                   <h4 className="text-lg font-bold text-black mb-1">

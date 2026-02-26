@@ -1,6 +1,7 @@
 "use client";
 
 import { Users } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 const niches = [
   // Industry Niches
@@ -43,27 +44,61 @@ const niches = [
 ];
 
 export default function Niches() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="niches"
       className="w-full bg-gray-900 py-20 md:py-32 overflow-hidden"
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* Niches Label */}
-        <div className="flex justify-center mb-6">
-          <span className="bg-gray-700 text-gray-300 px-4 py-1.5 rounded-full text-sm font-medium">
+        <div
+          className={`flex justify-center mb-6 transition-all duration-500 ${isVisible ? "animate-slideDown" : "opacity-0 -translate-y-4"}`}
+        >
+          <span className="bg-gray-700 text-gray-300 px-4 py-1.5 rounded-full text-sm font-medium hover:bg-gray-600 transition-colors">
             Niches
           </span>
         </div>
 
         {/* Main Title */}
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6 leading-tight">
+        <h2
+          className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6 leading-tight transition-all duration-700 ${isVisible ? "animate-scaleUp" : "opacity-0 scale-90"}`}
+        >
           Each niche has a story. I craft visuals that speak your{" "}
           <span className="font-black">brand's language.</span>
         </h2>
 
         {/* Supporting Paragraph */}
-        <p className="text-gray-300 text-lg md:text-xl text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <p
+          className={`text-gray-300 text-lg md:text-xl text-center max-w-3xl mx-auto mb-12 md:mb-16 transition-all duration-700 ${isVisible ? "animate-fadeInUp" : "opacity-0 translate-y-4"}`}
+          style={{ transitionDelay: "200ms" }}
+        >
           No matter your industry, my editing expertise spans multiple content
           styles — ensuring your videos connect, engage, and convert.
         </p>

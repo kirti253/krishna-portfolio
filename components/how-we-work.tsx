@@ -37,6 +37,7 @@ const processSteps = [
 
 export default function HowWeWork() {
   const [activeSteps, setActiveSteps] = useState<Set<number>>(new Set([1]));
+  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -56,6 +57,11 @@ export default function HowWeWork() {
         0,
         Math.min(1, (scrollY - sectionStart) / (sectionEnd - sectionStart)),
       );
+
+      // Check if section is in view
+      if (scrollY >= sectionStart && scrollY <= sectionEnd) {
+        setIsVisible(true);
+      }
 
       // Determine which steps should be active based on scroll progress
       const newActiveSteps = new Set<number>();
@@ -95,7 +101,9 @@ export default function HowWeWork() {
           {/* Left Column: Heading and Image Collage */}
           <div className="space-y-8">
             {/* Section Label */}
-            <div className="flex items-center gap-3">
+            <div
+              className={`flex items-center gap-3 transition-all duration-700 ${isVisible ? "animate-slideUp" : "opacity-0 translate-y-4"}`}
+            >
               <div className="w-3 h-3 bg-teal-500 rounded-sm"></div>
               <span className="text-gray-600 text-sm md:text-base font-medium uppercase tracking-wide">
                 How We Work
@@ -103,30 +111,36 @@ export default function HowWeWork() {
             </div>
 
             {/* Main Title */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-tight">
+            <h2
+              className={`text-4xl md:text-5xl lg:text-6xl font-black text-black leading-tight transition-all duration-700 ${isVisible ? "animate-scaleUp" : "scale-90 opacity-0"}`}
+              style={{ transitionDelay: "100ms" }}
+            >
               TURNING IDEAS INTO PATIENT IMPACT
             </h2>
 
             {/* Image Collage */}
-            <div className="relative w-full h-[500px] md:h-[600px] grid grid-cols-2 gap-3 md:gap-4">
+            <div
+              className={`relative w-full h-[500px] md:h-[600px] grid grid-cols-2 gap-3 md:gap-4 transition-all duration-700 ${isVisible ? "animate-fadeInUp" : "opacity-0"}`}
+              style={{ transitionDelay: "200ms" }}
+            >
               {/* Top Left Image */}
-              <div className="relative rounded-lg overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300"></div>
+              <div className="relative rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 hover:scale-105 transition-transform duration-300"></div>
               </div>
 
               {/* Top Right Image */}
-              <div className="relative rounded-lg overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400"></div>
+              <div className="relative rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 hover:scale-105 transition-transform duration-300"></div>
               </div>
 
               {/* Bottom Left - Larger Image */}
-              <div className="relative rounded-lg overflow-hidden col-span-1">
-                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400"></div>
+              <div className="relative rounded-lg overflow-hidden col-span-1 hover:shadow-lg transition-all duration-300">
+                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 hover:scale-105 transition-transform duration-300"></div>
               </div>
 
               {/* Bottom Right - Medical Setting Image */}
-              <div className="relative rounded-lg overflow-hidden col-span-1">
-                <div className="w-full h-full bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center">
+              <div className="relative rounded-lg overflow-hidden col-span-1 hover:shadow-lg transition-all duration-300">
+                <div className="w-full h-full bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center hover:scale-105 transition-transform duration-300">
                   <div className="text-gray-600 text-sm font-medium">
                     Medical Setting
                   </div>

@@ -194,6 +194,111 @@ body {
   }
 }
 
+@keyframes scaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(20, 184, 166, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes slideOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
 @layer utilities {
   .animate-popUp {
     animation: popUp 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
@@ -241,5 +346,45 @@ body {
 
   .animate-flipInRight {
     animation: flipInRight 0.8s ease-out forwards !important;
+  }
+
+  .animate-scaleUp {
+    animation: scaleUp 0.6s ease-out forwards !important;
+  }
+
+  .animate-rotateIn {
+    animation: rotateIn 0.7s ease-out forwards !important;
+  }
+
+  .animate-zoomIn {
+    animation: zoomIn 0.5s ease-out forwards !important;
+  }
+
+  .animate-slideDown {
+    animation: slideDown 0.6s ease-out forwards !important;
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.6s ease-out forwards !important;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s infinite !important;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite !important;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 4s ease-in-out infinite !important;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite !important;
+  }
+
+  .animate-slideLeft {
+    animation: slideInLeft 0.8s ease-out forwards !important;
   }
 }

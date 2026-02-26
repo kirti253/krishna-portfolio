@@ -6,7 +6,9 @@ import { videoUrl } from "@/lib/video-url";
 
 export default function Portfolio() {
   const [sectionInView, setSectionInView] = useState(false);
+  const [cardAnimations, setCardAnimations] = useState<boolean[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -21,6 +23,34 @@ export default function Portfolio() {
     );
     observer.observe(el);
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    const animationStates = new Array(13).fill(false);
+
+    cardsRef.current.forEach((ref, index) => {
+      if (!ref) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animationStates[index] = true;
+              setCardAnimations([...animationStates]);
+            }
+          });
+        },
+        { threshold: 0.2 },
+      );
+
+      observer.observe(ref);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
   }, []);
 
   const handleCardClick = (index: number) => {
@@ -117,12 +147,16 @@ export default function Portfolio() {
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* Main Heading */}
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black text-center mb-6">
+        <h2
+          className={`text-4xl md:text-5xl lg:text-6xl font-black text-black text-center mb-6 transition-all duration-700 ${sectionInView ? "animate-slideDown" : "opacity-0 translate-y-10"}`}
+        >
           Featured Work
         </h2>
 
         {/* Description Paragraph */}
-        <p className="text-gray-600 text-lg md:text-xl text-center max-w-3xl mx-auto mb-8">
+        <p
+          className={`text-gray-600 text-lg md:text-xl text-center max-w-3xl mx-auto mb-8 transition-all duration-700 delay-100 ${sectionInView ? "animate-fadeInUp" : "opacity-0"}`}
+        >
           From YouTube documentaries to Instagram reels and brand promos, here
           are some of my best edits that showcase creative storytelling and
           technical excellence.
@@ -130,8 +164,11 @@ export default function Portfolio() {
 
         {/* Get Quote Button */}
         <div className="flex justify-center mb-8">
-          <button className="flex items-center gap-3 bg-gray-100 hover:bg-gray-200 text-gray-900 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105">
-            <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center">
+          <button
+            className={`flex items-center gap-3 bg-gray-100 hover:bg-gray-200 text-gray-900 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 ${sectionInView ? "animate-scaleUp" : "scale-0"}`}
+            style={{ transitionDelay: "200ms" }}
+          >
+            <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center animate-pulse-glow">
               <ArrowRight className="w-5 h-5 text-white" />
             </div>
             <span>View All Projects</span>
@@ -139,7 +176,9 @@ export default function Portfolio() {
         </div>
 
         {/* Trust Statement */}
-        <p className="text-gray-500 text-sm md:text-base text-center mb-12">
+        <p
+          className={`text-gray-500 text-sm md:text-base text-center mb-12 transition-all duration-700 delay-200 ${sectionInView ? "animate-fadeInUp" : "opacity-0"}`}
+        >
           Work samples from various projects
         </p>
 
@@ -149,11 +188,24 @@ export default function Portfolio() {
             {/* Portfolio items - duplicated for seamless loop */}
             {[...portfolioItems, ...portfolioItems].map((item, idx) => {
               const finalVideoUrl = videoUrl(item.videoUrl);
+              const cardIndex = idx % portfolioItems.length;
+              const isAnimated = cardAnimations[cardIndex];
               return (
                 <div
                   key={`${item.id}-${idx}`}
+                  ref={(el) => {
+                    if (idx < portfolioItems.length) {
+                      cardsRef.current[cardIndex] = el;
+                    }
+                  }}
                   onClick={() => handleCardClick(item.id)}
-                  className="flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300 bg-black flex items-center justify-center"
+                  className={`flex-shrink-0 w-[300px] md:w-[400px] h-[400px] md:h-[500px] rounded-2xl border-2 border-gray-300 overflow-hidden relative group cursor-pointer hover:border-gray-400 hover:shadow-xl transition-all duration-300 bg-black flex items-center justify-center ${isAnimated ? "animate-scaleUp" : "scale-75 opacity-0"}`}
+                  style={{
+                    transitionDelay:
+                      idx < portfolioItems.length
+                        ? `${cardIndex * 100}ms`
+                        : "0ms",
+                  }}
                 >
                   {finalVideoUrl && (
                     <video
@@ -166,7 +218,7 @@ export default function Portfolio() {
                     />
                   )}
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center group-hover:bg-white/100 transition-all duration-300">
+                    <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center group-hover:bg-white/100 transition-all duration-300 group-hover:scale-110">
                       <div className="text-black text-3xl font-bold ml-1">
                         ▶
                       </div>
