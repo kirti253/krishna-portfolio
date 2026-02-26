@@ -16,7 +16,8 @@ export default function Contact() {
               Ready to Tell Your Story
             </h2>
             <p className="text-gray-600 text-lg md:text-xl">
-              Because in healthcare, trust is the real metric.
+              Because in content creation, storytelling is the real
+              differentiator.
             </p>
 
             {/* Profile Card */}
@@ -39,11 +40,12 @@ export default function Contact() {
               {/* Card Content */}
               <div className="text-center space-y-4">
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
-                  From 10M+ Views to One Call Away.
+                  From Millions of Views to Your Next Viral Video.
                 </h3>
                 <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                  Let's turn your expertise into content that educates,
-                  inspires, and builds lasting patient trust.
+                  Let's transform your raw footage into engaging content that
+                  captures attention, builds your brand, and keeps viewers
+                  coming back.
                 </p>
                 <Button
                   asChild
@@ -69,7 +71,7 @@ export default function Contact() {
             <div className="space-y-6">
               {/* Email Contact */}
               <a
-                href="mailto:kirti25032007@gmail.com"
+                href="mailto:krishnabhatt4545@gmail.com"
                 className="flex items-center gap-4 p-6 bg-white rounded-xl border-2 border-gray-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300 group"
               >
                 <div className="w-14 h-14 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0 group-hover:bg-teal-600 transition-colors">
@@ -77,10 +79,10 @@ export default function Contact() {
                 </div>
                 <div className="flex-1">
                   <h4 className="text-lg font-bold text-black mb-1">
-                    Email Us
+                    Email Me
                   </h4>
                   <p className="text-gray-600 text-sm md:text-base">
-                    kirti25032007@gmail.com
+                    krishnabhatt4545@gmail.com
                   </p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-teal-500 transition-colors" />
@@ -88,7 +90,7 @@ export default function Contact() {
 
               {/* Instagram Contact */}
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/visualsbykrishhh/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-6 bg-white rounded-xl border-2 border-gray-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300 group"
@@ -101,7 +103,7 @@ export default function Contact() {
                     Follow on Instagram
                   </h4>
                   <p className="text-gray-600 text-sm md:text-base">
-                    Connect with us on social media
+                    See latest edits, reels, and behind-the-scenes
                   </p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-teal-500 transition-colors" />
@@ -110,8 +112,8 @@ export default function Contact() {
               {/* Additional Info */}
               <div className="pt-4 border-t border-gray-200">
                 <p className="text-gray-600 text-sm">
-                  We typically respond within 24 hours. Looking forward to
-                  hearing from you!
+                  I usually respond within 24 hours. Excited to collaborate with
+                  you!
                 </p>
               </div>
             </div>
