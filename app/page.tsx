@@ -3,6 +3,7 @@ import About from "@/components/about";
 import Services from "../components/services";
 import Niches from "@/components/niches";
 import Portfolio from "@/components/portfolio";
+import FeaturedEdit from "@/components/featured-edit";
 import HowWeWork from "@/components/how-we-work";
 import Reviews from "@/components/reviews";
 import Contact from "@/components/contact";
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
+      <FeaturedEdit />
       <Niches />
       <Portfolio />
       <HowWeWork />
