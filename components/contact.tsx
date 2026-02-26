@@ -67,7 +67,7 @@ export default function Contact() {
                   <div className="absolute inset-0 bg-gradient-to-b from-teal-400 to-teal-600 rounded-full animate-pulse-glow"></div>
                   <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-teal-500">
                     <Image
-                      src="/professional-indian-man-content-creator-portrait-d.jpg"
+                      src="/heroimage.jpeg"
                       alt="Krishna Bhatt"
                       fill
                       className="object-cover hover:scale-125 transition-transform duration-500"

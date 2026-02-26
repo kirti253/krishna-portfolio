@@ -50,7 +50,7 @@ export default function Footer() {
               href="mailto:kirti25032007@gmail.com"
               className="text-gray-300 hover:text-teal-400 transition-colors text-sm md:text-base hover:underline"
             >
-              kirti25032007@gmail.com
+              krishnabhatt4545@gmail.com
             </a>
           </div>
 
@@ -60,7 +60,7 @@ export default function Footer() {
             style={{ transitionDelay: "100ms" }}
           >
             <p className="text-gray-300 text-sm md:text-base text-center">
-              All rights reserved Sunmac® 2025
+              All rights reserved krishna® 2026
             </p>
           </div>
 
@@ -91,7 +91,7 @@ export default function Footer() {
           style={{ transitionDelay: "400ms" }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white hover:text-teal-400 transition-colors duration-300">
-            SunMac Edits
+            Krishna Edits
           </h2>
         </div>
       </div>
